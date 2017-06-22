@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-size: 14px;
+    color: #333;
+    height: 100%;
+    font-family: "微软雅黑";
+    font-weight: normal;
+}
+
+.auth-wrap {
+    width: 100%;
+    margin-top: 15px;
+}
+
+input {
+    width: 180px;
+    height: 28px;
+    outline: none;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+label {
+    font-weight: 400;
+    height: 28px;
+}
+.btn{
+	margin-left:42px;
+}
+.btn button {
+    width: 70px;
+    height: 30px;
+    background-color: #3399ff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin-left: 42px;
+}
+.auth-wrap hr {
+    width: 100%;
+    height: 1px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+table {
+    width: 92%;
+    margin:0 0 30px 42px;
+    text-align: center;
+}
+
+td {
+    padding: 5px 15px;
+}
+
+tr {
+    height: 50px;
+}
+.auth-connect{
+	padding:5px 50px;
+}

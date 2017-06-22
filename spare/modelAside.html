@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta charset="UTF-8">
+    <title>冷链模板</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/model.css">
+</head>
+
+<body>
+    <!-- 左边菜单栏区域 -->
+    <aside>
+        <!-- 主页 -->
+        <p class="home">
+            <a href=""><span class="glyphicon glyphicon-home"></span>主页</a>
+        </p>
+        <!-- 功能菜单 -->
+        <p class="func">功能菜单</p>
+        <ul class="func-menu">
+            <!-- 人员管理 -->
+            <li>
+                <p class="manage">人员管理</p>
+                <ul class="active">
+                    <li><a href="">用户管理</a></li>
+                    <li><a href="">操作用户管理</a></li>
+                    <li><a href="">权限管理</a></li>
+                </ul>
+            </li>
+            <!-- 设备管理 -->
+            <li>
+                <p class="manage">设备管理</p>
+                <ul class="active">
+                    <li><a href="">冷链箱管理</a></li>
+                    <li><a href="">智能锁管理</a></li>
+                    <li><a href="">租赁管理</a></li>
+                </ul>
+            </li>
+            <!-- 数据维护 -->
+            <li class="num">
+                <p class="manage">数据管理</p>
+                <ul class="active">
+                    <li><a href="">药品维护</a></li>
+                    <li><a href="">机构维护</a></li>
+                    <li><a href="">基础数据</a></li>
+                    <li><a href="">数据导出</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 当前时间 -->
+        <div class="current-time">
+            <p>当前时间：</p>
+            <p class="time"></p>
+        </div>
+    </aside>
+    <!-- 右侧内容区域 -->
+    <section></section>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/model.js"></script>
+</body>
+
+</html>

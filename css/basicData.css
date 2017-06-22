@@ -1,0 +1,74 @@
+.basic-input-box input,
+select {
+    width: 100px;
+    height: 28px;
+    outline: none;
+    border: 1px solid #ccc;
+    font-weight: 400;
+    padding-left: 10px;
+    text-align: right;
+    margin-left: 0;
+}
+
+label {
+    margin-left: 20px;
+}
+
+label span {
+    display: inline-block;
+    text-align: left;
+}
+
+.label1 {
+    margin-left: 42px;
+}
+
+.label1 span {
+    width: 90px;
+}
+
+.label2 span {
+    width: 85px;
+}
+
+.label3 span {
+    width: 85px;
+}
+
+td {
+    padding: 5px 15px;
+}
+
+.tab {
+    overflow: hidden;
+    margin: 0;
+}
+
+.tab li {
+    float: left;
+    list-style: none;
+    border: 1px solid #ccc;
+    height: 30px;
+    line-height: 30px;
+    width: 150px;
+    text-align: center;
+    border:1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor:pointer;
+    background-color:#eee;
+}
+
+.tab-hr {
+    margin: 0;
+}
+.user-wrap{
+    display:none;
+}
+.wrap-active{
+    display:block;
+}
+.li-active{
+    background-color:#fff!important;
+    font-weight:bold;
+}

@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-size: 14px;
+    color: #333;
+    height: 100%;
+    font-family: "微软雅黑";
+    font-weight: normal;
+}
+
+.user-wrap {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.input-box {
+    width: 100%;
+}
+
+.input-box input,
+select {
+    width: 120px;
+    height: 28px;
+    outline: none;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+label {
+    font-weight: 400;
+    height: 28px;
+    margin:0px 0px 15px 42px;
+}
+
+.btn {
+    /*margin-top: 5px;*/
+    padding: 0;
+}
+
+.btn button {
+    width: 70px;
+    height: 30px;
+    background-color: #3399ff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin-left: 42px;
+}
+
+.user-wrap hr {
+    width: 100%;
+    height: 1px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    margin: 5px 0px 15px 0px;
+}
+
+table {
+    width: 92%;
+    margin-left: 42px;
+    text-align: center;
+}
+
+td {
+    padding: 5px 20px;
+}
+
+tr {
+    height: 28px;
+}
+table a:hover{
+    color:#3399ff;
+}
+#export input{
+    width:200px;
+    margin-left:10px;
+}
+#export-btn{
+    width: 70px;
+    height: 30px;
+    background-color: #3399ff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin-left: 42px;
+}

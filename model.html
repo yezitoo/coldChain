@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta charset="UTF-8">
+    <title>冷链平台模板</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/model.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部区域 -->
+        <header>
+            <div class="wrap">
+                <div class="model_title">智慧冷链监控平台</div>
+                <div class="message">
+                    <a href="mail.html" target="user">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </a>
+                </div>
+                <div class="setting">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="user"><p>您好</p>
+                <p>哇哈哈</p></span>
+                    <span class="glyphicon glyphicon-triangle-bottom" id="set-select"></span>
+                    <div class="setting-menu">
+                        <ul>
+                            <li>修改密码</li>
+                            <li>退出系统</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 当前位置 -->
+            <div class="location"><span>欢迎使用智慧冷链监控平台 </span><span>当前位置：</span><span class="location_current"></span></div>
+        </header>
+        <article>
+            <!-- 左边菜单栏区域 -->
+            <aside>
+                <!-- 主页 -->
+                <p class="home">
+                    <a href=""><span class="glyphicon glyphicon-home"></span>主页</a>
+                </p>
+                <!-- 功能菜单 -->
+                <p class="func">功能菜单</p>
+                <ul class="func-menu">
+                    <!-- 人员管理 -->
+                    <li>
+                        <p class="manage">人员管理</p>
+                        <ul class="active">
+                            <li><a href="user.html" target="user">用户管理</a></li>
+                            <li><a href="userOperate.html" target="user">操作用户管理</a></li>
+                            <li><a href="authority.html" target="user">权限管理</a></li>
+                        </ul>
+                    </li>
+                    <!-- 设备管理 -->
+                    <li>
+                        <p class="manage">设备管理</p>
+                        <ul class="active">
+                            <li><a href="coldChainBox.html" target="user">冷链箱管理</a></li>
+                            <li><a href="lock.html" target="user">智能锁管理</a></li>
+                            <li><a href="rent.html" target="user">租赁管理</a></li>
+                        </ul>
+                    </li>
+                    <!-- 数据维护 -->
+                    <li class="num">
+                        <p class="manage">数据管理</p>
+                        <ul class="active">
+                            <li><a href="drug.html" target="user">药品维护</a></li>
+                            <li><a href="agency.html" target="user">机构维护</a></li>
+                            <li><a href="basicData.html" target="user">基础数据</a></li>
+                            <li><a href="export.html" target="user">数据导出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 当前时间 -->
+                <div class="current-time">
+                    <p>当前时间：</p>
+                    <p class="time"></p>
+                </div>
+            </aside>
+            <!-- 右侧内容区域 -->
+            <section>
+                <iframe id="user" frameborder="0" name="user" width="100%" height="100%" scrolling="no"></iframe>
+            </section>
+        </article>
+        <!-- footer部分 -->
+        <footer>
+            <div>Copyright by 智慧冷链©</div>
+        </footer>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/model.js"></script>
+</body>
+
+</html>
+

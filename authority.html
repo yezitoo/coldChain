@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/authority.css">
+    <title>权限设置</title>
+</head>
+
+<body>
+    <div class="auth-wrap">
+        <div class="btn">
+            <label for="">角色名：
+                <input type="text">
+            </label>
+            <button>查询</button>
+            <button>新增</button>
+        </div>
+        <hr>
+        <table border="1">
+            <tr style="background-color:#169bd5;color:#fff;">
+                <td>序号</td>
+                <td>角色名称</td>
+                <td class="auth-connect">关联权限</td>
+                <td>状态</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    //调用父级iframe自适应高度函数
+    window.onload = function() {
+        window.parent.setIframeHeight(window.parent.user);
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>基础数据</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/basicData.css">
+</head>
+
+<body>
+    <ul class="tab">
+        <li class="li-active">冷链箱型号</li>
+        <li>智能锁型号</li>
+    </ul>
+    <hr class="tab-hr">
+    <div class="user-wrap wrap-active">
+        <div class="basic-input-box">
+            <div class="basic-input-box1">
+                <label for="" class="label1"><span>冷链箱型号ID</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label2"><span>冷链箱型号</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label3"><span>冷链箱容器</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label4"><span>状态</span>
+                    <select name="" id="">
+                        <option value="正常">正常</option>
+                        <option value="停用">停用</option>
+                        <option value="全部">全部</option>
+                    </select>
+                </label>
+            </div>
+            <div class="basic-input-box2">
+                <label for="" class="label1"><span>冷链箱重量</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label2"><span>最低温度</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label3"><span>最高温度</span>
+                    <input type="text">
+                </label>
+            </div>
+        </div>
+        <div class="btn">
+            <button>查询</button>
+            <button onclick="javascript:location.href='basicDataAdd1.html'">新增</button>
+        </div>
+        <hr>
+        <table border="1">
+            <tr style="background-color:#169bd5;color:#fff;">
+                <td>序号</td>
+                <td>冷链箱型号ID</td>
+                <td>冷链箱型号</td>
+                <td>冷链箱容量（升）</td>
+                <td>冷链箱重量（公斤）</td>
+                <td>最低温度（度）</td>
+                <td>最高温度（度）</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+            <tr bgcolor="#eee">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="basicDataEdit1.html">编辑</a></td>
+            </tr>
+        </table>
+        <div class="page">
+            <button id="pg-prev">上一页</button>
+            <span class="page-num">
+                    <!-- <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">5</a>
+                    <a href="">6</a>
+                    <a href="">7</a>
+                    <a href="">8</a> -->
+                </span>
+            <button id="pg-next">下一页</button>
+            <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
+        </div>
+    </div>
+    <div class="user-wrap">
+        <div class="basic-input-box">
+            <div class="basic-input-box1">
+                <label for="" class="label1"><span>冷链箱型号ID</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label2"><span>冷链箱型号</span>
+                    <input type="text">
+                </label>
+            </div>
+            <div class="basic-input-box2">
+                <label for="" class="label1"><span>生产商</span>
+                    <input type="text">
+                </label>
+                <label for="" class="label2"><span>状态</span>
+                    <select name="" id="">
+                        <option value="正常">正常</option>
+                        <option value="停用">停用</option>
+                        <option value="全部">全部</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="btn">
+            <button>查询</button>
+            <button onclick="javascript:location.href='basicDataAdd2.html'">新增</button>
+        </div>
+        <hr>
+        <form action="">
+            <table border="1">
+                <tr style="background-color:#169bd5;color:#fff;">
+                    <td>序号</td>
+                    <td>冷链箱型号ID</td>
+                    <td>冷链箱型号</td>
+                    <td>生产商</td>
+                    <td>状态</td>
+                    <td>操作</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="basicDataEdit2.html">编辑</a></td>
+                </tr>
+            </table>
+            <div class="page1">
+                <button id="pg-prev1">上一页</button>
+                <span class="page-num1">
+                    <!-- <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">5</a>
+                    <a href="">6</a>
+                    <a href="">7</a>
+                    <a href="">8</a> -->
+                </span>
+                <button id="pg-next1">下一页</button>
+                <span class="page-skip1"><em>共<b id="page-total1"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num1"><em>页</em><button id="confirm1">确定</button></span>
+            </div>
+        </form>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/page1.js"></script>
+    <script>
+    window.onload = function() {
+        window.parent.setIframeHeight(window.parent.user);
+    }
+
+    $(".tab li").each(function(index) {
+        $(this).click(function() {
+            $(".tab li").removeClass("li-active");
+            $(".tab li").eq(index).addClass("li-active");
+            $(".user-wrap").removeClass("wrap-active");
+            $(".user-wrap").eq(index).addClass("wrap-active");
+        })
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta charset="UTF-8">
+    <title>数据导出</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/user.css">
+</head>
+
+<body>
+    <div class="user-wrap">
+        <label for="" id="export">订单编号
+            <input type="text">
+        </label>
+        <button id="export-btn">导出</button>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    window.onload = function() {
+        window.parent.setIframeHeight(window.parent.user);
+    }
+    </script>
+</body>
+
+</html>

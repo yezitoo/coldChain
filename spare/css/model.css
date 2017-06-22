@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width:1024px) {
+    html,
+    body {
+        font-size: 14px;
+        color: #333;
+        height: 100%;
+        font-family: "微软雅黑";
+    }
+    .container {
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        padding: 0;
+    }
+    /*头部样式*/
+    header {
+        width: 100%;
+        height: 120px;
+        color: #fff;
+        position: relative;
+        z-index: 2;
+    }
+    .wrap {
+        height: 80px;
+        background-color: rgb(51, 153, 255);
+    }
+    .model_title {
+        width: 240px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 30px;
+        position: absolute;
+        left: 50%;
+        margin-left: -120px;
+    }
+    .glyphicon-user {
+        color: #fff;
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    .glyphicon-envelope {
+        font-size: 30px;
+        color: #fff;
+    }
+    .glyphicon-triangle-bottom {
+        color: #fff;
+        margin: 0 20px;
+    }
+    .message {
+        position: absolute;
+        right: 175px;
+        top: 26px;
+    }
+    .user p {
+        margin: 0;
+    }
+    .setting {
+        height: 80px;
+        position: absolute;
+        right: 0px;
+        display: flex;
+        align-items: center;
+    }
+    .setting-menu {
+        display: none;
+        width: 100%;
+        color: #333;
+        background-color: #fff;
+        position: absolute;
+        top: 80px;
+    }
+    .setting-menu ul {
+        margin: 0;
+        border: 1px solid #ccc;
+        background-color: #eee;
+    }
+    .setting-menu ul li {
+        list-style: none;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .menu_hover {
+        background-color: rgb(51, 153, 255);
+        color: #fff;
+    }
+    .location {
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #eee;
+        position: absolute;
+        background-color: #fff;
+        color: #333;
+        top: 80px;
+        width: 100%;
+    }
+    .location span:nth-child(1) {
+        display: inline-block;
+        width: 16%;
+        text-align: center;
+    }
+    .location span:nth-child(2) {
+        margin-left: 40px;
+    }
+    /*内容部分样式*/
+    article {
+        height: 100%;
+        margin-top: -120px;
+        padding-top: 120px;
+    }
+    /*左侧菜单导航*/
+    aside{
+        float: left;
+        width: 16%;
+        min-height: 100%;
+        background-color: #eee;
+        border-right: 2px solid #ccc;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    .home {
+        text-decoration: none;
+        border-top: 2px solid #ccc;
+        border-bottom: 2px solid #ccc;
+    }
+    .glyphicon-home {
+        margin-right: 5px;
+    }
+    aside a {
+        display: inline-block;
+        color: #333;
+        width: 100%;
+    }
+    aside p {
+        margin: 0;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 10px 0px;
+    }
+    .num {
+        margin-bottom: 100px;
+    }
+    .func-menu {
+        margin: 0;
+    }
+    .func-menu>li {
+        border-top: 2px solid #ccc;
+    }
+    .func-menu>li:last-child {
+        border-bottom: 2px solid #ccc;
+    }
+    p.func {
+        cursor: auto;
+    }
+    .active {
+        display: none;
+    }
+    .active li a {
+        width: 100%;
+        padding: 8px 0px;
+        text-decoration: none;
+    }
+    .current-time {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        text-align: left;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+    .current-time p {
+        font-size: 12px;
+        padding: 0;
+    }
+    /*右侧内容区域*/
+    section {
+        float: left;
+        width: 84%;
+    }
+    /*footer部分样式*/
+    footer {
+        position: fixed;
+        z-index: 3;
+        bottom: 0;
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        background-color: #3399ff;
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+    }
+}

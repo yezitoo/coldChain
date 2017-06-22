@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>个人新增</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/rentAdd.css">
+    <link rel="stylesheet" href="css/page.css">
+</head>
+
+<body>
+    <div class="add-wrap">
+        <form action="">
+            <div class="input-box1">
+                <div>
+                    <label for=""><span>订单号码</span>
+                        <input type="text">
+                    </label>
+                    <label for=""><span>下单时间</span>
+                        <input type="date">
+                    </label>
+                    <label for="" id="temp"><span>预警温度（度）</span>
+                        <input type="text">-
+                        <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <label for=""><span>租赁ID</span>
+                        <input type="text">
+                    </label>
+                    <label for=""><span>租赁人姓名</span>
+                        <input type="text">
+                    </label>
+                    <label for=""><span>租赁人电话</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <label for=""><span>设备容量</span>
+                        <select name="" id="">
+                            <option value="5升">5升</option>
+                            <option value="10升">10升</option>
+                            <option value="25升">25升</option>
+                            <option value="45升">45升</option>
+                            <option value="全部">全部</option>
+                        </select>
+                    </label>
+                    <label for=""><span>设备编号</span>
+                        <input type="text">
+                    </label>
+                    <button>查询</button>
+                </div>
+            </div>
+            <table border="1" id="table">
+                <tr style="background-color:#169bd5;color:#fff;">
+                    <td>序号</td>
+                    <td>设备编号</td>
+                    <td>设备类型</td>
+                    <td>设备容量</td>
+                    <td>设备状态</td>
+                    <td>分配使用</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+                <tr bgcolor="#eee">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <input type="checkbox"><span>使用</span></div>
+                    </td>
+                </tr>
+            </table>
+            <div class="page">
+                <button id="pg-prev">上一页</button>
+                <span class="page-num">
+                    <!-- <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">5</a>
+                    <a href="">6</a>
+                    <a href="">7</a>
+                    <a href="">8</a> -->
+                </span>
+                <button id="pg-next">下一页</button>
+                <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
+            </div>
+            <div class="input-box2">
+                <button id="add-confirm">确认</button>
+                <button id="back">返回</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/page.js"></script>
+    <script>
+    window.onload = function() {
+        window.parent.setIframeHeight(window.parent.user);
+    }
+    </script>
+</body>
+
+</html>
