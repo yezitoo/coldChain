@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <div class="home-wrap">
+        <div class="statis-data">
+            <div><span class="glyphicon glyphicon-user"></span><span class="statis-num"><p>200</p>
+		<p class="statis-text">昨日新增用户</p></span></div>
+            <div><span class="glyphicon glyphicon-tasks"></span><span class="statis-num"><p>1000</p>
+		<p class="statis-text">今日租赁数量</p></span></div>
+            <div><a href="mail.html"><span class="glyphicon glyphicon-bell"></span><span class="statis-num"><p>5</p>
+		<p class="statis-text">待处理事件</p></span></a></div>
+        </div>
+        <div></div>
+        <div class="statis-tab">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th><span>1</span><span>浙一医院</span></th>
+                        <th><span>2</span><span>浙一医院</span></th>
+                        <th><span>3</span><span>浙一医院</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p><span>派单量：</span><span>800</span></p>
+                            <p><span>销售金额：</span><span>134000</span></p>
+                        </td>
+                        <td>
+                            <p><span>派单量：</span><span>500</span></p>
+                            <p><span>销售金额：</span><span>10000</span></p>
+                        </td>
+                        <td>
+                            <p><span>派单量：</span><span>100</span></p>
+                            <p><span>销售金额：</span><span>9000</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    window.onload = function() {
+        window.parent.setIframeHeight(window.parent.user);
+    }
+    </script>
+</body>
+
+</html>

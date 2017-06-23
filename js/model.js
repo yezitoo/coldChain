@@ -8,6 +8,11 @@ $("#set-select").click(function() {
     }
 })
 
+//当鼠标离开设置二级菜单，二级菜单消失
+ $(".setting-menu").mouseleave(function(){
+    $(".setting-menu").hide();
+ })
+
 //个人信息二级菜单滑动事件
 $(".setting-menu ul li").hover(function() {
     $(this).addClass("menu_hover");
@@ -40,8 +45,8 @@ $(".active li a").each(function(index) {
     })
 })
 
+//因导航栏的a标签的默认跳转事件，造成a标签的点击之后的样式失效，所以使用存储方式使刷新后重新设置
 window.onload = function() {
-    // debugger
     var new_bgcolor = localStorage.getItem("bgcolor");
     var new_fcolor = localStorage.getItem("fcolor");
     var new_index = localStorage.getItem("active_num");
@@ -50,6 +55,15 @@ window.onload = function() {
     $(".location_current").html("首页");
 }
 
+//关闭页面时清除存储数据（即最近存储的左边导航栏的a的点击样式）
+$(window).unload(function() {
+    localStorage.clear();
+})
+
+//点击邮件信息按钮时，因页面未全部刷新，所以上面的清除样式无法删除导航栏的样式，所以再次清除导航栏样式
+$(".message a span").click(function() {
+    $(".active li a").removeAttr("style");
+})
 
 //设置当前动态时间
 var time = (new Date()).toLocaleString();

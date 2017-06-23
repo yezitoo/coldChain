@@ -17,7 +17,7 @@ body {
     margin-top: 15px;
 }
 
-.add-wrap form input,
+.add-wrap  input,
 select {
     width: 160px;
     height: 28px;
@@ -28,13 +28,13 @@ select {
     padding-left: 10px;
 }
 
-.add-wrap form label {
+.add-wrap  label {
     width: 230px;
     font-weight: 400;
     margin: 0px 0px 15px 42px;
 }
 
-.add-wrap form span {
+.add-wrap  span {
     display: inline-block;
     width: 60px;
     height: 28px;
@@ -101,6 +101,9 @@ table{
     width:92%!important;
     text-align:center;
 }
+thead tr{
+    background-color:#eee;
+}
 th{
     font-weight:400;
     text-align:center;
@@ -121,4 +124,12 @@ th{
 }
 .fail{
     color:#3399ff;
+}
+.mail_mes{
+    width:92%;
+    margin-bottom: 15px;
+    text-align:right;
+}
+.mail_unread{
+    color:#ff0000;
 }

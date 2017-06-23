@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.home-wrap {
+    width: 85%;
+    margin: 35px auto 0px auto;
+}
+
+.statis-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+}
+
+.statis-data span {
+    display: inline-block;
+}
+
+.statis-data div {
+    background: linear-gradient(#fff, #eee);
+    width: 30%;
+    border: 1px solid #eee;
+    padding: 5px 0px;
+}
+
+.statis-data div a {
+    color: #333;
+}
+
+.statis-data div a:hover {
+    color: #333;
+}
+
+.glyphicon {
+    width: 35%;
+    font-size: 50px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    color: rgb(102, 102, 102);
+}
+
+.glyphicon-bell {
+    color: rgb(51, 153, 255);
+}
+
+.statis-num {
+    width: 65%;
+}
+
+.statis-num p {
+    margin: 0;
+    text-align: center;
+}
+
+.statis-text {
+    font-size: 14px;
+}
+
+.statis-tab {
+    margin-top: 100px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+thead th {
+    width: 33%;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+thead th span:nth-child(1) {
+    border: 1px solid #9e9d9d;
+    padding: 1px 3px;
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+td {
+    padding: 15px 0px;
+}
+
+td p {
+    text-align: center;
+    margin: 10px 0px;
+}

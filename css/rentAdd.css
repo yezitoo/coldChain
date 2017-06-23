@@ -28,7 +28,7 @@ select {
     /*margin-left:5px;*/
 }
 
-.add-wrap form label {
+.add-wrap  label {
     width: 226px;
     font-weight: 400;
     margin: 0px 0px 15px 42px;

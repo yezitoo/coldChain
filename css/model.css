@@ -73,7 +73,6 @@
         background-color: #fff;
         position: absolute;
         top: 80px;
-        /*right:0;*/
     }
     .setting-menu ul {
         margin: 0;
@@ -130,6 +129,10 @@
         text-decoration: none;
         border-top: 2px solid #ccc;
         border-bottom: 2px solid #ccc;
+    }
+    .home a:hover{
+        color:#333;
+        text-decoration:none;
     }
     .glyphicon-home {
         margin-right: 5px;
