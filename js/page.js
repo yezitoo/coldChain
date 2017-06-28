@@ -1,7 +1,8 @@
 //分页设置
 $(function() {
+    //分页变量
     var page = 20;
-    var pageCurrent = 8;
+    var pageCurrent = 1;
     var page_current_num;
     var page_num = $(".page-num");
     var pg_prev = $("#pg-prev");
@@ -9,6 +10,10 @@ $(function() {
     var confirm = $("#confirm");
     var input_page = $("#input-num");
     var input_page_num;
+
+    //每页的条数变量
+    var bar = 5;
+
     //将翻页的过程封装在setPage()函数里，方便后续重复调用
     function setPage(pageCurrent) {
         if (pageCurrent == 1) {
@@ -65,6 +70,8 @@ $(function() {
             $(this).click(function() {
                 pageCurrent = $(this).html();
                 setPage(pageCurrent);
+                //调用ajax方法获取数据
+                fetch(pageCurrent, bar);
                 return false;
             })
         })
@@ -108,4 +115,86 @@ $(function() {
         setPage(pageCurrent);
         return false;
     })
+
+    //初次加载页面时每页条数
+    var thead_td0 = $(".thead0 td").length;
+    var thead_td1 = $(".thead1 td").length;
+    var location_name = window.location.href.split("coldChain/")[1];
+    var location = location_name.split(".html")[0];
+    var location_current = location + "Edit.html";
+    //将表格循环生成函数进行封装，便于多次调用
+
+    function package(link, num) {
+        for (var i = 0; i < bar; i++) {
+            var tr = $("<tr></tr>");
+            if (i % 2 == 0) {
+                for (var v = 0; v < num; v++) {
+                    if (location == "rent") {
+                        if (v == num - 1) {
+                            tr.append('<td><a href="' + link + '">查看</a></td>');
+                        } else {
+                            tr.append("<td></td>");
+                        }
+                    } else {
+                        if (v == num - 1) {
+                            tr.append('<td><a href="' + link + '">编辑</a></td>');
+                        } else {
+                            tr.append("<td></td>");
+                        }
+                    }
+
+                }
+            } else {
+                for (var v = 0; v < num; v++) {
+                    if (location == "rent") {
+                        if (v == num - 1) {
+                            tr.append('<td><a href="' + link + '">查看</a></td>');
+                        } else {
+                            tr.append("<td></td>");
+                        }
+                        tr.css("background-color", "#eee");
+                    } else {
+                        if (v == num - 1) {
+                            tr.append('<td><a href="' + link + '">编辑</a></td>');
+                        } else {
+                            tr.append("<td></td>");
+                        }
+                        tr.css("background-color", "#eee");
+                    }
+                }
+            }
+            if (link == "basicDataEdit1.html") {
+                $(".thead0").parent("tbody").parent("table").append(tr);
+            } else if (link == "basicDataEdit2.html") {
+                $(".thead1").parent("tbody").parent("table").append(tr);
+            } else {
+                $(".thead0").parent("tbody").parent("table").append(tr);
+            }
+        }
+    }
+    //页面一加载完成时，调用表格循环生成的函数，以一页10行的默认值生成
+    if (location == "basicData") {
+        package('basicDataEdit1.html', thead_td0);
+        package('basicDataEdit2.html', thead_td1);
+
+    } else if (location == "rent") {
+        package("rentCheck.html", thead_td0);
+    } else {
+        package(location_current, thead_td0);
+    }
+
+    //用户选择每页条数动态生成表格条数
+    $("#bar").on('change', function() {
+        bar = $("#bar option:selected").val() - 10;
+        if (location == "basicData") {
+            package('basicDataEdit1.html', thead_td0);
+            package('basicDataEdit2.html', thead_td1);
+        } else if (location == "rent") {
+            package("rentCheck.html", thead_td0);
+        } else {
+            package(location_current, thead_td0);
+        }
+        window.parent.setIframeHeight(window.parent.user);
+    })
+
 })

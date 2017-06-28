@@ -110,7 +110,6 @@
     }
     /*内容部分样式*/
     article {
-        overflow:hidden;
         margin-top: -120px;
         padding-top: 120px;
     }

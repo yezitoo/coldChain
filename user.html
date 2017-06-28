@@ -15,158 +15,130 @@
         <div class="input-box">
             <div class="input-box1">
                 <label for="">用户名称
-                    <input type="text">
+                    <input type="text" id="username">
                 </label>
                 <label for="">用户电话
-                    <input type="tel">
+                    <input type="tel" id="phone">
                 </label>
                 <label for="">用户状态
-                    <select name="" id="">
-                        <option value="全部">全部</option>
-                        <option value="正常">正常</option>
-                        <option value="停用">停用</option>
+                    <select name="userstatus" id="us">
+                        <option value="0">正常</option>
+                        <option value="1">停用</option>
+                        <option value="">全部</option>
                     </select>
                 </label>
             </div>
             <div class="input-box2">
                 <label for="">用户类型
-                    <select name="" id="">
-                        <option value="医院">医院</option>
-                        <option value="供应商">供应商</option>
-                        <option value="个人">个人</option>
-                        <option value="全部">全部</option>
+                    <select name="usertype" id="pe">
+                        <option value="">全部</option>
+                        <option value="0">系统管理员</option>
+                        <option value="1">医院管理员</option>
+                        <option value="2">代理商</option>
                     </select>
                 </label>
                 <label for="">所属机构
-                    <select name="" id="">
+                    <select name="mecname" id="mecname">
+                        <option value="">全部</option>
                         <option value="浙一医院">浙一医院</option>
                         <option value="华东医院">华东医院</option>
                         <option value="个人">个人</option>
-                        <option value="全部">全部</option>
                     </select>
                 </label>
                 <label for="">操作权限
-                    <select name="" id="">
-                        <option value="开箱">开箱</option>
-                        <option value="送货">送货</option>
-                        <option value="收货">收货</option>
-                        <option value="个人">个人</option>
-                        <option value="全部">全部</option>
+                    <select name="privileges" id="pr">
+                        <option value="">全部</option>
+                        <option value="0">开箱</option>
+                        <option value="1">送货</option>
+                        <option value="2">收货</option>
+                        <option value="3">个人</option>
                     </select>
                 </label>
             </div>
         </div>
         <div class="btn">
-            <button>查询</button>
+            <button id="query">查询</button>
+            <button id="reset">重置</button>
             <button onclick="javascript:location.href='userAdd.html'">新增</button>
         </div>
         <hr>
-        <form action="">
-            <table border="1">
-                <tr style="background-color:#169bd5;color:#fff;">
-                    <td>序号</td>
-                    <td>用户ID</td>
-                    <td>用户名称</td>
-                    <td>用户电话</td>
-                    <td>用户类型</td>
-                    <td>所属机构</td>
-                    <td>用户地址</td>
-                    <td>操作权限</td>
-                    <td>用户状态</td>
-                    <td>操作</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                   <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="userEdit.html">编辑</a></td>
-                </tr>
-            </table>
-            <div class="page">
-                <button id="pg-prev">上一页</button>
-                <span class="page-num">
-                    <!-- <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
-                    <a href="">8</a> -->
+        <table border="1">
+            <tr style="background-color:#169bd5;color:#fff;" class="thead0">
+                <td>序号</td>
+                <td>用户ID</td>
+                <td>用户名称</td>
+                <td>用户电话</td>
+                <td>用户类型</td>
+                <td>所属机构</td>
+                <td>用户地址</td>
+                <td>操作权限</td>
+                <td>用户状态</td>
+                <td>操作</td>
+            </tr>
+        </table>
+        <div class="page">
+            <span class="bar"><em>每页</em>
+                <select name="" id="bar">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+                <em>条</em>
                 </span>
-                <button id="pg-next">下一页</button>
-                <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
-            </div>
-        </form>
+            <button id="pg-prev">上一页</button>
+            <span class="page-num">
+                    <!-- <a href="">1</a>
+                    <a href="">2</a> -->
+                </span>
+            <button id="pg-next">下一页</button>
+            <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
+        </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    function fetch(a, b) {
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.1.6:8080/zhll-ssm/fenyeUser",
+            data: {
+                "username": $("#username").val(),
+                "phone": $("#phone").val(),
+                "userstatus": $("#us").val(),
+                "peotype": $("#pe").val(),
+                "meccoding": $("#mecname").val(),
+                "privileges": $("#pr").val(),
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                console.log(msg.userlist);
+                $.each(msg.userlist, function(index, value) {
+                    $($($("tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("tr")[index + 1]).children()[1]).html(value.userid);
+                    $($($("tr")[index + 1]).children()[2]).html(value.username);
+                    $($($("tr")[index + 1]).children()[3]).html(value.phone);
+                    $($($("tr")[index + 1]).children()[4]).html(value.pe);
+                    $($($("tr")[index + 1]).children()[5]).html(value.mecinfo.mecname);
+                    $($($("tr")[index + 1]).children()[6]).html(value.address);
+                    $($($("tr")[index + 1]).children()[7]).html(value.pr);
+                    $($($("tr")[index + 1]).children()[8]).html(value.us);
+                    var old_href = $($($("tr")[index + 1]).children()[9]).children().attr("href");
+                    var new_href = old_href + "?userid=" + value.userid;
+                    $($($("tr")[index + 1]).children()[9]).children().attr("href", new_href);
+                })
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+            }
+        })
+    }
+    $(function() {
+        fetch(1, 5);
+    })
+    </script>
     <script src="js/page.js"></script>
     <script>
     //当user.html加载完成后调用最外层（最顶级的window的setIframeHeight方法，因为当前js处于iframe的window里面，setIframeHeight方法是定义
@@ -175,6 +147,12 @@
         // window.parent指的就是最外层的window对象，window.parent.user是最外层window对象里面定义的user变量（即通过document.getElmentById拿到的iframe）
         window.parent.setIframeHeight(window.parent.user);
     }
+    // $("#query").click(function() {
+    //     for (i = 0; i < bar; i++) {
+    //         $($($("tr")[i + 1]).children()).text("");
+    //     }
+    //     fetch(pageCurrent, bar);
+    // })
     </script>
 </body>
 

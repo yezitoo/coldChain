@@ -31,6 +31,7 @@
             <div class="input-box2">
                 <label for="">机构类型
                     <select name="" id="">
+                        <option value="全部">全部</option>
                         <option value="医药">医药</option>
                         <option value="医院">医院</option>
                         <option value="供应商">供应商</option>
@@ -40,11 +41,12 @@
         </div>
         <div class="btn">
             <button>查询</button>
+            <button id="reset">重置</button>
             <button onclick="javascript:location.href='agencyAdd.html'">新增</button>
         </div>
         <hr>
         <table border="1">
-            <tr style="background-color:#169bd5;color:#fff;">
+            <tr style="background-color:#169bd5;color:#fff;" class="thead0">
                 <td>序号</td>
                 <td>机构编号</td>
                 <td>机构名称</td>
@@ -55,74 +57,18 @@
                 <td>机构状态</td>
                 <td>操作</td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="agencyEdit.html">编辑</a></td>
-            </tr>
         </table>
         <div class="page">
+            <span class="bar"><em>每页</em>
+                <select name="" id="bar">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+                <em>条</em>
+                </span>
             <button id="pg-prev">上一页</button>
             <span class="page-num">
                     <!-- <a href="">1</a>

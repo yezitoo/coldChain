@@ -14,52 +14,73 @@
         <div style="width:550px">
             <div class="input-box1">
                 <div>
-                    <label for=""><span>用户ID</span>
-                        <input type="text">
-                    </label>
                     <label for=""><span>用户名称</span>
-                        <input type="text">
+                        <input type="text" id="username">
+                    </label>
+                    <label for=""><span>用户电话</span>
+                        <input type="tel" id="phone">
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>用户电话</span>
-                        <input type="tel">
+                    <label for=""><span>用户地址</span>
+                        <input type="text" id="address">
                     </label>
                     <label for=""><span>用户类型</span>
-                        <select name="" id="">
-                            <option value="医院">医院</option>
-                            <option value="供应商">供应商</option>
-                            <option value="个人">个人</option>
-                            <option value="全部">全部</option>
+                        <select name="usertype" id="pe">
+                            <option value="">全部</option>
+                            <option value="0">系统管理员</option>
+                            <option value="1">医院管理员</option>
+                            <option value="2">代理商</option>
                         </select>
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>操作权限</span>
-                        <select name="" id="">
-                            <option value="开箱">开箱</option>
-                            <option value="送货">送货</option>
-                            <option value="收货">收货</option>
-                            <option value="个人">个人</option>
-                            <option value="全部">全部</option>
-                        </select>
-                    </label>
                     <label for=""><span>所属机构</span>
-                        <select name="" id="">
+                        <select name="mecname" id="mecname">
+                            <option value="全部">全部</option>
                             <option value="浙一医院">浙一医院</option>
                             <option value="华东医院">华东医院</option>
                             <option value="个人">个人</option>
-                            <option value="全部">全部</option>
+                        </select>
+                    </label>
+                    <label for="">操作权限
+                        <select name="privileges" id="pr">
+                            <option value="">全部</option>
+                            <option value="0">开箱</option>
+                            <option value="1">送货</option>
+                            <option value="2">收货</option>
+                            <option value="3">个人</option>
                         </select>
                     </label>
                 </div>
             </div>
             <div class="input-box2">
                 <button id="add-confirm">确认</button>
+                <button id="reset">重置</button>
                 <button id="back" onclick="javascript:location.href='user.html'">返回</button>
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $("#add-confirm").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.1.6:8080/zhll-ssm/insertUser",
+            data: {
+                "username": $("#username").val(),
+                "phone": $("#phone").val(),
+                "address": $("#address").val(),
+                "peotype": $("#pe").val(),
+                "meccoding": $("#mecname").val(),
+                "privileges": $("#pr").val()
+            },
+            success: function() {
+                loction.href = "user.html";
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

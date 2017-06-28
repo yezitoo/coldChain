@@ -53,6 +53,8 @@ window.onload = function() {
     var new_location = localStorage.getItem("location_current");
     $(".active li a").eq(parseInt(new_index)).css({ "background-color": "#3399ff", "color": new_fcolor });
     $(".location_current").html("首页");
+    //打开网页，页面显示在主页上
+    window.open('home.html','user');
 }
 
 //关闭页面时清除存储数据（即最近存储的左边导航栏的a的点击样式）

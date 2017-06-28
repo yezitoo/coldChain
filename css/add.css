@@ -57,10 +57,9 @@ select {
     padding: 8px 20px;
 }
 
-#back {
-    margin-left: 60px;
+#reset{
+    margin:0 30px;
 }
-
 #remark {
     width: 506px;
 }
@@ -80,13 +79,13 @@ select {
 #origin input {
     width: 436px;
 }
-#address {
+/*#address {
     width: 506px;
 }
 
 #address input {
     width: 436px;
-}
+}*/
 #basicDataAdd label{
     width:260px;
 }

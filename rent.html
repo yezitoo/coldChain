@@ -49,12 +49,12 @@
         </div>
         <div class="btn">
             <button>查询</button>
-            <button onclick="javascript:location.href='hospitalAdd.html'">医院新增</button>
-            <button onclick="javascript:location.href='personAdd.html'">个人新增</button>
+            <button onclick="javascript:location.href='rentAdd1.html'">医院新增</button>
+            <button onclick="javascript:location.href='rentAdd2.html'">个人新增</button>
         </div>
         <hr>
         <table border="1">
-            <tr style="background-color:#169bd5;color:#fff;">
+            <tr style="background-color:#169bd5;color:#fff;" class="thead0">
                 <td>序号</td>
                 <td>派单号码</td>
                 <td>派单时间</td>
@@ -67,86 +67,18 @@
                 <td>数据导出</td>
                 <td>详情</td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
-            <tr bgcolor="#eee">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="rentCheck.html">查看</a></td>
-            </tr>
         </table>
         <div class="page">
+            <span class="bar"><em>每页</em>
+                <select name="" id="bar">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+                <em>条</em>
+                </span>
             <button id="pg-prev">上一页</button>
             <span class="page-num">
                     <!-- <a href="">1</a>

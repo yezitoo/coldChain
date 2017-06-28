@@ -4,10 +4,11 @@
     margin: 35px auto 0px auto;
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
+    box-sizing: content-box;
 }
 
-.page button{
+.page button {
     color: #fff;
     background-color: #3399ff;
     padding: 5px 8px;
@@ -69,6 +70,30 @@
     color: #169bd5;
 }
 
+.bar,
+.bar1 {
+    color: #169bd5;
+    margin-right: 10px;
+}
+
+.bar select {
+    width: 45px;
+    height: 30px;
+    padding-left: 0;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.bar1 select {
+    width: 45px;
+    height: 30px;
+    padding-left: 0;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
 #input-num,
 #input-num1 {
     width: 60px;
@@ -92,6 +117,7 @@
     background-color: #3399ff !important;
     color: #fff !important;
 }
+
 .page-num-st1 {
     background-color: #3399ff !important;
     color: #fff !important;
