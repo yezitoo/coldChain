@@ -7,7 +7,7 @@ html,
 body {
     font-size: 14px;
     color: #333;
-    height: 100%;
+    min-height: 100%;
     font-family: "微软雅黑";
     font-weight: normal;
 }

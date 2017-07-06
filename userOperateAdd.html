@@ -15,15 +15,15 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>操作人员</span>
-                        <input type="text">
+                        <input type="text" id="name">
                     </label>
                     <label for=""><span>联系电话</span>
-                        <input type="tel">
+                        <input type="tel" id="phone">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>用户类型</span>
-                        <select name="usertype" id="">
+                        <select name="usertype" id="user-type">
                             <option value="">全部</option>
                             <option value="0">系统管理员</option>
                             <option value="1">医院管理员</option>
@@ -31,7 +31,7 @@
                         </select>
                     </label>
                     <label for=""><span>所属机构</span>
-                        <select name="mecname" id="">
+                        <select name="mecname" id="mec-name">
                             <option value="全部">全部</option>
                             <option value="浙一医院">浙一医院</option>
                             <option value="华东医院">华东医院</option>
@@ -47,6 +47,26 @@
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/add.js"></script>
+    <script>
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.3:8080/zhll-ssm/adminadd",
+            type: "POST",
+            data: {
+                "name": $("#name").val(),
+                "phone": $("#phone").val(),
+                "usertype": $("#user-type").val(),
+                "mecname": $("#mec-name").val()
+            },
+            success:function(){
+                location.href="userOperate.html";
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

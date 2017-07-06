@@ -83,9 +83,19 @@
     }
     .setting-menu ul li {
         list-style: none;
-        padding: 10px;
+        padding: 12px;
         text-align: center;
         cursor: pointer;
+    }
+    .setting-menu ul li:hover {
+        background-color: rgb(51, 153, 255);
+    }
+    .setting-menu ul li span {
+        margin: 0 5px;
+    }
+    .glyphicon-edit,
+    .glyphicon-off {
+        font-size: 16px;
     }
     .menu_hover {
         background-color: rgb(51, 153, 255);
@@ -129,9 +139,9 @@
         border-top: 2px solid #ccc;
         border-bottom: 2px solid #ccc;
     }
-    .home a:hover{
-        color:#333;
-        text-decoration:none;
+    .home a:hover {
+        color: #333;
+        text-decoration: none;
     }
     .glyphicon-home {
         margin-right: 5px;
@@ -168,12 +178,12 @@
     .active li a {
         width: 100%;
         padding: 8px 0px;
-        margin:1px 0px;
+        margin: 1px 0px;
         text-decoration: none;
     }
-    .active li a:hover{
-        background-color:#3399ff;
-        color:#fff;
+    .active li a:hover {
+        background-color: #3399ff;
+        color: #fff;
     }
     .current-time {
         width: 100%;
@@ -208,5 +218,4 @@
         text-align: center;
         font-size: 12px;
     }
-    
 }

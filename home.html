@@ -7,19 +7,21 @@
     <title>首页</title>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/ichart.1.2.min.js"></script>
 </head>
 
 <body>
     <div class="home-wrap">
         <div class="statis-data">
             <div><span class="glyphicon glyphicon-user"></span><span class="statis-num"><p>200</p>
-		<p class="statis-text">昨日新增用户</p></span></div>
+        <p class="statis-text">昨日新增用户</p></span></div>
             <div><span class="glyphicon glyphicon-tasks"></span><span class="statis-num"><p>1000</p>
-		<p class="statis-text">今日租赁数量</p></span></div>
+        <p class="statis-text">今日租赁数量</p></span></div>
             <div><a href="mail.html"><span class="glyphicon glyphicon-bell"></span><span class="statis-num"><p>5</p>
-		<p class="statis-text">待处理事件</p></span></a></div>
+        <p class="statis-text">待处理事件</p></span></a></div>
         </div>
-        <div></div>
+        <div id="canvasDiv"></div>
         <div class="statis-tab">
             <table border="1">
                 <thead>
@@ -48,12 +50,37 @@
             </table>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script>
     window.onload = function() {
         window.parent.setIframeHeight(window.parent.user);
     }
+    //图表组件
+    $(function() {
+        var data = [{
+            name: '订单量统计',
+            value: [0, 1, 12, 20, 26, 30, 40, 35, 22, 12, 0, 5],
+            color: '#1f7e92',
+            line_width: 3
+        }];
+        var chart = new iChart.LineBasic2D({
+            render: 'canvasDiv',
+            data: data,
+            title: '7日订单数据统计',
+            width: 720,
+            height: 400,
+            coordinate: {
+                height: '90%',
+                background_color: '#f6f9fa'
+            },
+            sub_option: {
+                hollow_inside: false, //设置一个点的亮色在外环的效果
+                point_size: 16
+            },
+            labels: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+        });
+        chart.draw();
+    });
     </script>
 </body>
 

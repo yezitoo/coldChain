@@ -58,10 +58,6 @@
     font-size: 14px;
 }
 
-.statis-tab {
-    margin-top: 100px;
-}
-
 table {
     width: 100%;
     border: 1px solid #ccc;
@@ -89,3 +85,9 @@ td p {
     text-align: center;
     margin: 10px 0px;
 }
+
+#canvasDiv {
+    margin: 30px auto;
+}
+
+

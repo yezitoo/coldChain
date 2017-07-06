@@ -15,7 +15,7 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>用户名称</span>
-                        <input type="text" id="username">
+                        <input type="text" id="user-name">
                     </label>
                     <label for=""><span>用户电话</span>
                         <input type="tel" id="phone">
@@ -25,26 +25,27 @@
                     <label for=""><span>用户地址</span>
                         <input type="text" id="address">
                     </label>
-                    <label for=""><span>用户类型</span>
-                        <select name="usertype" id="pe">
+                    <label for=""><span>人员类型</span>
+                        <select id="peo-type">
                             <option value="">全部</option>
-                            <option value="0">系统管理员</option>
-                            <option value="1">医院管理员</option>
-                            <option value="2">代理商</option>
+                            <option value="0">发货开箱</option>
+                            <option value="1">送货</option>
+                            <option value="2">收货开箱</option>
+                            <option value="3">个人</option>
                         </select>
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>所属机构</span>
-                        <select name="mecname" id="mecname">
-                            <option value="全部">全部</option>
+                    <label for="">所属机构
+                        <select id="mec-name">
+                            <option value="">全部</option>
                             <option value="浙一医院">浙一医院</option>
-                            <option value="华东医院">华东医院</option>
+                            <option value="华东医药">华东医药</option>
                             <option value="个人">个人</option>
                         </select>
                     </label>
                     <label for="">操作权限
-                        <select name="privileges" id="pr">
+                        <select id="privileges">
                             <option value="">全部</option>
                             <option value="0">开箱</option>
                             <option value="1">送货</option>
@@ -62,21 +63,23 @@
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/add.js"></script>
     <script>
     $("#add-confirm").click(function() {
         $.ajax({
-            type: "POST",
-            url: "http://192.168.1.6:8080/zhll-ssm/insertUser",
+            type: "POST ",
+            url: "http://192.168.1.15:8080/zhll-ssm/insertUser",
             data: {
-                "username": $("#username").val(),
+                "username": $("#user-name").val(),
                 "phone": $("#phone").val(),
                 "address": $("#address").val(),
-                "peotype": $("#pe").val(),
-                "meccoding": $("#mecname").val(),
-                "privileges": $("#pr").val()
+                "peotype": $("#peo-type").val(),
+                "meccoding": $("#mec-name").val(),
+                "privileges": $("#privileges").val()
             },
             success: function() {
-                loction.href = "user.html";
+                location.href = "http://192.168.1.15:8080/zhll-ssm/skipUser";
             }
         })
     })

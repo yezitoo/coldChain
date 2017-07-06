@@ -55,6 +55,7 @@ select {
     outline: none;
     color: #fff;
     padding: 8px 20px;
+    margin:0px 20px;
 }
 
 #reset{

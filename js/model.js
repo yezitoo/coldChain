@@ -9,9 +9,9 @@ $("#set-select").click(function() {
 })
 
 //当鼠标离开设置二级菜单，二级菜单消失
- $(".setting-menu").mouseleave(function(){
+$(".setting-menu").mouseleave(function() {
     $(".setting-menu").hide();
- })
+})
 
 //个人信息二级菜单滑动事件
 $(".setting-menu ul li").hover(function() {
@@ -54,7 +54,7 @@ window.onload = function() {
     $(".active li a").eq(parseInt(new_index)).css({ "background-color": "#3399ff", "color": new_fcolor });
     $(".location_current").html("首页");
     //打开网页，页面显示在主页上
-    window.open('home.html','user');
+    window.open('home.html', 'user');
 }
 
 //关闭页面时清除存储数据（即最近存储的左边导航栏的a的点击样式）
@@ -68,8 +68,11 @@ $(".message a span").click(function() {
 })
 
 //设置当前动态时间
-var time = (new Date()).toLocaleString();
-$(".time").html(time);
+function timeCurrent() {
+    var time = (new Date()).toLocaleString();
+    $(".time").html(time);
+}
+setInterval("timeCurrent()", 1000);
 
 //iframe框架自适应内容高度,函数的调用在每个子页面的js中调用
 var aside = document.getElementsByTagName("aside")[0];

@@ -15,13 +15,13 @@
         <div class="input-box">
             <div class="input-box1">
                 <label for="">用户名称
-                    <input type="text" id="username">
+                    <input type="text" id="user-name">
                 </label>
                 <label for="">用户电话
                     <input type="tel" id="phone">
                 </label>
                 <label for="">用户状态
-                    <select name="userstatus" id="us">
+                    <select id="user-status">
                         <option value="0">正常</option>
                         <option value="1">停用</option>
                         <option value="">全部</option>
@@ -29,24 +29,25 @@
                 </label>
             </div>
             <div class="input-box2">
-                <label for="">用户类型
-                    <select name="usertype" id="pe">
+                <label for=""><span>人员类型</span>
+                    <select id="peo-type">
                         <option value="">全部</option>
-                        <option value="0">系统管理员</option>
-                        <option value="1">医院管理员</option>
-                        <option value="2">代理商</option>
+                        <option value="0">发货开箱</option>
+                        <option value="1">送货</option>
+                        <option value="2">收货开箱</option>
+                        <option value="3">个人</option>
                     </select>
                 </label>
                 <label for="">所属机构
-                    <select name="mecname" id="mecname">
+                    <select id="mec-name">
                         <option value="">全部</option>
                         <option value="浙一医院">浙一医院</option>
-                        <option value="华东医院">华东医院</option>
+                        <option value="华东医药">华东医药</option>
                         <option value="个人">个人</option>
                     </select>
                 </label>
                 <label for="">操作权限
-                    <select name="privileges" id="pr">
+                    <select id="privileges">
                         <option value="">全部</option>
                         <option value="0">开箱</option>
                         <option value="1">送货</option>
@@ -93,28 +94,43 @@
                     <a href="">2</a> -->
                 </span>
             <button id="pg-next">下一页</button>
-            <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
+            <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num" min=1><em>页</em><button id="confirm">确定</button></span>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script>
+    var row_num; //表格行数
+    var thead_td0; //表格列数
+    var render_tab;
+    var total_page;
+    var set_page;
+    var page_num = $(".page-num");
+
     function fetch(a, b) {
         $.ajax({
             type: "POST",
-            url: "http://192.168.1.6:8080/zhll-ssm/fenyeUser",
+            url: "http://192.168.1.15:8080/zhll-ssm/fenyeUser",
             data: {
-                "username": $("#username").val(),
+                "username": $("#user-name").val(),
                 "phone": $("#phone").val(),
-                "userstatus": $("#us").val(),
-                "peotype": $("#pe").val(),
-                "meccoding": $("#mecname").val(),
-                "privileges": $("#pr").val(),
+                "userstatus": $("#user-status").val(),
+                "peotype": $("#peo-type").val(),
+                "meccoding": $("#mec-name").val(),
+                "privileges": $("#privileges").val(),
                 "page": a,
                 "size": b
             },
             success: function(msg) {
-                console.log(msg.userlist);
+                row_num = msg.userlist.length;
+                thead_td0 = $(".thead0 td").length;
+                total_page = msg.pagelist[0].totalPage;
+                page_num.empty();
+                set_page(a, total_page);
+                for (var i = ($("tr").length - 1); i > 0; i--) {
+                    $($("tr")[i]).remove();
+                };
+                render_table(row_num, thead_td0);
                 $.each(msg.userlist, function(index, value) {
                     $($($("tr")[index + 1]).children()[0]).html(index + 1);
                     $($($("tr")[index + 1]).children()[1]).html(value.userid);
@@ -125,10 +141,10 @@
                     $($($("tr")[index + 1]).children()[6]).html(value.address);
                     $($($("tr")[index + 1]).children()[7]).html(value.pr);
                     $($($("tr")[index + 1]).children()[8]).html(value.us);
-                    var old_href = $($($("tr")[index + 1]).children()[9]).children().attr("href");
-                    var new_href = old_href + "?userid=" + value.userid;
-                    $($($("tr")[index + 1]).children()[9]).children().attr("href", new_href);
-                })
+                    var href = "userEdit.html?userid=" + value.userid;
+                    $($($("tr")[index + 1]).children()[9]).append('<a href=' + href + '>编辑</a>')
+                });
+                window.parent.setIframeHeight(window.parent.user);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert(XMLHttpRequest.status);
@@ -136,7 +152,7 @@
         })
     }
     $(function() {
-        fetch(1, 5);
+        fetch(1, 10);
     })
     </script>
     <script src="js/page.js"></script>
@@ -147,12 +163,6 @@
         // window.parent指的就是最外层的window对象，window.parent.user是最外层window对象里面定义的user变量（即通过document.getElmentById拿到的iframe）
         window.parent.setIframeHeight(window.parent.user);
     }
-    // $("#query").click(function() {
-    //     for (i = 0; i < bar; i++) {
-    //         $($($("tr")[i + 1]).children()).text("");
-    //     }
-    //     fetch(pageCurrent, bar);
-    // })
     </script>
 </body>
 

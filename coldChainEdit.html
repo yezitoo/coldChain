@@ -15,45 +15,48 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>设备编号</span>
-                        <input type="text">
+                        <input type="text" id="device-num">
                     </label>
                     <label for=""><span>设备类型</span>
-                        <input type="text">
+                        <input type="text" id="device-type">
                     </label>
                     <label for=""><span>设备容量</span>
-                        <select name="" id="">
-                            <option value="5升">5升</option>
-                            <option value="10升">10升</option>
-                            <option value="25升">25升</option>
-                            <option value="45升">45升</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="device-capacity">
+                            <option value="">全部</option>
+                            <option value="5">5升</option>
+                            <option value="10">10升</option>
+                            <option value="25">25升</option>
+                            <option value="45">45升</option>
                         </select>
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>当前使用</span>
-                        <input type="text">
+                    <label for=""><span>租赁人</span>
+                        <input type="text" id="renter">
                     </label>
-                    <label for=""><span>联系电话</span>
-                        <input type="tel">
+                    <label for=""><span>是否借出</span>
+                        <select name="" id="lend">
+                            <option value="">全部</option>
+                            <option value="0">未借出</option>
+                            <option value="1">已借出</option>
+                        </select>
                     </label>
                     <label for=""><span>设备状态</span>
-                        <select name="" id="">
-                            <option value="正常">正常</option>
-                            <option value="停用">停用</option>
-                            <option value="异常">异常</option>
-                            <option value="维修">维修</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="device-status">
+                            <option value="">全部</option>
+                            <option value="0">正常</option>
+                            <option value="1">异常</option>
+                            <option value="2">停用</option>
+                            <option value="3">维修</option>
                         </select>
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>医院名称</span>
-                        <select name="" id="">
+                    <label for=""><span>所属用户</span>
+                        <select name="" id="owner">
+                            <option value="">全部</option>
                             <option value="浙一医院">浙一医院</option>
-                            <option value="浙二医院">浙二医院</option>
-                            <option value="市一医院">市一医院</option>
-                            <option value="市二医院">市二医院</option>
+                            <option value="浙二医院">华东医药</option>
                         </select>
                     </label>
                     <label for="" id="remark"><span>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</span>
@@ -67,6 +70,55 @@
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/match.js"></script>
+    <script>
+    var device_num = window.location.href.split("?")[1];
+
+    function modify() {
+        $.ajax({
+            url: "http://192.168.1.4:8080/zhll-ssm/selectBox",
+            type: "POST",
+            data: {
+                "boxno": device_num
+            },
+            success: function(msg) {
+                $("#device-num").val(msg[0].boxno);
+                $("#device-type").val(msg[0].boxmodel);
+                $("#renter").val(msg[0].username);
+                $("#remarks").val(msg[0].remarks);
+                $("#owner").val(msg[0].mecname);
+                match("device-capacity", msg[0].capacity);
+                match("lend", msg[0].ifl);
+                match("device-status", msg[0].sta);
+            },
+        })
+    }
+    $(function() {
+        modify();
+    })
+
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.4:8080/zhll-ssm/updateBox",
+            type: "POST",
+            data: {
+                "boxno": $("#device-num").val(),
+                "boxmodel": $("#device-type").val(),
+                "capacity": $("#device-capacity").val(),
+                "username": $("#renter").val(),
+                "iflend ": $("#lend").val(),
+                "state": $("#device-status").val(),
+                "mecname": $("#owner").val(),
+                "remarks": $("#remarks").val()
+            },
+            success: function(msg) {
+                location.href = "coldChain.html";
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

@@ -13,41 +13,46 @@
     <div class="input-box">
         <div class="input-box1">
             <label for="">设备编号
-                <input type="text">
+                <input type="text" id="device-num">
             </label>
             <label for="">设备类型
-                <input type="text">
+                <input type="text" id="device-type">
             </label>
             <label for="">设备容量
-                <select name="" id="">
-                    <option value="5升">5升</option>
-                    <option value="10升">10升</option>
-                    <option value="25升">25升</option>
-                    <option value="45升">45升</option>
-                    <option value="全部">全部</option>
+                <select name="" id="device-capacity">
+                    <option value="">全部</option>
+                    <option value="5">5升</option>
+                    <option value="10">10升</option>
+                    <option value="25">25升</option>
+                    <option value="45">45升</option>
                 </select>
             </label>
         </div>
         <div class="input-box2">
-            <label for="">当前使用
-                <input type="text">
+            <label for="">租赁人
+                <input type="text" id="renter">
             </label>
-            <label for="">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话
-                <input type="tel">
+            <label for="">是否借出
+                <select name="" id="lend">
+                    <option value="">全部</option>
+                    <option value="0">未借出</option>
+                    <option value="1">已借出</option>
+                </select>
             </label>
             <label for="">设备状态
-                <select name="" id="">
-                    <option value="正常">正常</option>
-                    <option value="停用">停用</option>
-                    <option value="异常">异常</option>
-                    <option value="维修">维修</option>
-                    <option value="全部">全部</option>
+                <select name="" id="device-status">
+                    <option value="">全部</option>
+                    <option value="0">正常</option>
+                    <option value="1">异常</option>
+                    <option value="2">停用</option>
+                    <option value="3">维修</option>
                 </select>
             </label>
         </div>
     </div>
     <div class="btn">
-        <button>查询</button>
+        <button id="query">查询</button>
+        <button id="reset">重置</button>
         <button onclick="javascript:location.href='coldChainAdd.html'">新增</button>
     </div>
     <hr>
@@ -57,9 +62,9 @@
             <td>设备编号</td>
             <td>设备类型</td>
             <td>设备容量</td>
-            <td>当前使用</td>
-            <td>电话</td>
+            <td>租赁人</td>
             <td>所属用户</td>
+            <td>是否借出</td>
             <td>设备状态</td>
             <td>备注说明</td>
             <td>操作</td>
@@ -78,23 +83,72 @@
                 </span>
         <button id="pg-prev">上一页</button>
         <span class="page-num">
-                    <!-- <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
-                    <a href="">8</a> -->
-                </span>
+                     <!-- <a href="">1</a>
+                    <a href="">2</a> -->
+        </span>
         <button id="pg-next">下一页</button>
-        <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num"><em>页</em><button id="confirm">确定</button></span>
+        <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num" min=1><em>页</em><button id="confirm">确定</button></span>
     </div>
 </div>
 
 <body>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    var total_page;
+    var render_table;
+    var row_num;
+    var col_num;
+    var set_page;
+    var page_num = $(".page-num");
+
+    function fetch(a, b) {
+        $.ajax({
+            url: "http://192.168.1.4:8080/zhll-ssm/fenyeBox",
+            type: "POST",
+            data: {
+                "boxno": $("#device-num").val(),
+                "boxmodel": $("#device-type").val(),
+                "capacity": $("#device-capacity").val(),
+                "username": $("#renter").val(),
+                "iflend": $("#lend").val(),
+                "state": $("#device-status").val(),
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                row_num = msg.boxlist.length;
+                col_num = $(".thead0 td").length;
+                total_page = msg.pagelist[0].totalPage;
+                for (var i = $("tr").length; i > 0; i--) {
+                    if ($($("tr")[i]).attr("class") == "thead0") {
+
+                    } else {
+                        $($("tr")[i]).remove();
+                    }
+                }
+                render_table(row_num, col_num);
+
+                page_num.empty();
+                set_page(a, total_page);
+                $.each(msg.boxlist, function(index, value) {
+                    $($($("tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("tr")[index + 1]).children()[1]).html(value.boxno);
+                    $($($("tr")[index + 1]).children()[2]).html(value.boxmodel);
+                    $($($("tr")[index + 1]).children()[3]).html(value.capacity);
+                    $($($("tr")[index + 1]).children()[4]).html(value.username);
+                    $($($("tr")[index + 1]).children()[5]).html(value.mecname);
+                    $($($("tr")[index + 1]).children()[6]).html(value.ifl);
+                    $($($("tr")[index + 1]).children()[7]).html(value.sta);
+                    $($($("tr")[index + 1]).children()[8]).html(value.remarks);
+                    var href = "coldChainEdit.html?" + value.boxno;
+                    $($($("tr")[index + 1]).children()[9]).append('<a href="' + href + '">编辑</a>');
+                })
+            }
+        })
+    }
+    fetch(1, 10);
+    </script>
     <script src="js/page.js"></script>
     <script>
     window.onload = function() {

@@ -15,10 +15,10 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>用户ID</span>
-                        <input type="text" id="userid" disabled>
+                        <input type="text" id="user-id" disabled>
                     </label>
                     <label for=""><span>用户名称</span>
-                        <input type="text" id="username">
+                        <input type="text" id="user-name">
                     </label>
                 </div>
                 <div>
@@ -30,26 +30,27 @@
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>用户类型</span>
-                        <select name="usertype" id="pe">
+                    <label for=""><span>人员类型</span>
+                        <select id="peo-type">
                             <option value="">全部</option>
-                            <option value="0">系统管理员</option>
-                            <option value="1">医院管理员</option>
-                            <option value="2">代理商</option>
+                            <option value="0">发货开箱</option>
+                            <option value="1">送货</option>
+                            <option value="2">收货开箱</option>
+                            <option value="3">个人</option>
                         </select>
                     </label>
-                    <label for=""><span>所属机构</span>
-                        <select name="mecname" id="mecname">
-                            <option value="全部">全部</option>
-                            <option value="浙一医院">浙一医院</option>
-                            <option value="华东医院">华东医院</option>
-                            <option value="个人">个人</option>
-                        </select>
-                    </label>
+                    <label for="">所属机构
+                    <select id="mec-name">
+                        <option value="">全部</option>
+                        <option value="浙一医院">浙一医院</option>
+                        <option value="华东医药">华东医药</option>
+                        <option value="个人">个人</option>
+                    </select>
+                </label>
                 </div>
                 <div>
                     <label for="">操作权限
-                        <select name="privileges" id="pr">
+                        <select id="privileges">
                             <option value="">全部</option>
                             <option value="0">开箱</option>
                             <option value="1">送货</option>
@@ -58,7 +59,7 @@
                         </select>
                     </label>
                     <label for="">用户状态
-                        <select name="userstatus" id="us">
+                        <select id="user-status">
                             <option value="0">正常</option>
                             <option value="1">停用</option>
                             <option value="">全部</option>
@@ -73,6 +74,7 @@
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
+    <script src="js/match.js"></script>
     <script>
     function modify() {
         var location_name = window.location.href;
@@ -84,15 +86,21 @@
                 "userid": user_id
             },
             success: function(msg) {
-                console.log(msg.userlist);
-                $("#userid").val(msg.userlist.userid);
-                $("#username").val(msg.userlist.username);
-                $("#phone").val(msg.userlist.phone);
-                $("#pe").val(msg.userlist.pe);
-                $("#mecname").val(msg.userlist.mecinfo.mecname);
-                $("#address").val(msg.userlist.address);
-                $("#pr").val(msg.userlist.pr);
-                $("#us").val(msg.userlist.us);
+                var pe_match = msg[0].pe;
+                var pr_match = msg[0].pr;
+                var us_match = msg[0].us;
+
+                //下拉框通过匹配获取值
+                match("peo-type", pe_match);
+                match("privileges", pr_match);
+                match("user-status", us_match);
+
+                //输入框获取数值
+                $("#user-id").val(msg[0].userid);
+                $("#user-name").val(msg[0].username);
+                $("#phone").val(msg[0].phone);
+                $("#address").val(msg[0].address);
+                $("#mec-name").val(msg[0].mecinfo.mecname);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert(XMLHttpRequest.status);
@@ -106,19 +114,19 @@
     $("#add-confirm").click(function() {
         $.ajax({
             type: "POST",
-            url: "http://192.168.1.3:8080/zhll-ssm/updateUser",
+            url: "http://192.168.1.15:8080/zhll-ssm/updateUser",
             data: {
-                "userid": $("#userid").val(),
-                "username": $("#username").val(),
+                "userid": $("#user-id").val(),
+                "username": $("#user-name").val(),
                 "phone": $("#phone").val(),
                 "address": $("#address").val(),
-                "peotype": $("#pe").val(),
-                "meccoding": $("#mecname").val(),
-                "privileges": $("#pr").val(),
-                "userstatus": $("#us").val()
+                "peotype": $("#peo-type").val(),
+                "meccoding": $("#mec-name").val(),
+                "privileges": $("#privileges").val(),
+                "userstatus": $("#user-status").val()
             },
             success: function() {
-                location.href = "user.html";
+                location.href = "http://192.168.1.15:8080/zhll-ssm/skipUser";
             }
         })
     })
