@@ -14,6 +14,12 @@ $("#reset").click(function() {
             $("#user-status").val(0);
         } else if ($($(".input-box1 select")[i]).attr("id") == "device-status") {
             $("#device-status").val(0);
+        } else if ($($(".input-box1 select")[i]).attr("id") == "drug-status") {
+            $("#drug-status").val(0);
+        } else if ($($(".input-box1 select")[i]).attr("id") == "agency-status") {
+            $("#agency-status").val(0);
+        } else if ($($(".input-box1 select")[i]).attr("id") == "lock-status") {
+            $("#lock-status").val(0);
         } else {
             $($(".input-box1 select")[i]).val("");
         };

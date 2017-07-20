@@ -1,5 +1,5 @@
-.page,
-.page1 {
+.page
+ {
     width: 92%;
     margin: 35px auto 0px auto;
     display: flex;
@@ -7,7 +7,14 @@
     padding-bottom: 50px;
     box-sizing: content-box;
 }
-
+.page1{
+    width: 100%;
+    margin: 35px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+}
 .page button {
     color: #fff;
     background-color: #3399ff;
@@ -65,9 +72,12 @@
     background-color: #3399ff;
 }
 
-.page-skip,
-.page-skip1 {
+.page-skip {
     color: #169bd5;
+}
+
+.page-skip1 {
+    color: #333;
 }
 
 .bar,
@@ -102,6 +112,7 @@
     text-align: center;
     border: 1px solid #ccc;
     margin-left: 5px;
+    background-color: #ffffff;
 }
 
 #confirm,

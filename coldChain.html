@@ -12,13 +12,13 @@
 <div class="user-wrap">
     <div class="input-box">
         <div class="input-box1">
-            <label for="">设备编号
+            <label for=""><span>设备编号</span>
                 <input type="text" id="device-num">
             </label>
-            <label for="">设备类型
+            <label for=""><span>设备类型</span>
                 <input type="text" id="device-type">
             </label>
-            <label for="">设备容量
+            <label for=""><span>设备容量</span>
                 <select name="" id="device-capacity">
                     <option value="">全部</option>
                     <option value="5">5升</option>
@@ -29,17 +29,17 @@
             </label>
         </div>
         <div class="input-box2">
-            <label for="">租赁人
+            <label for=""><span>租赁人</span>
                 <input type="text" id="renter">
             </label>
-            <label for="">是否借出
+            <label for=""><span>是否借出</span>
                 <select name="" id="lend">
                     <option value="">全部</option>
                     <option value="0">未借出</option>
                     <option value="1">已借出</option>
                 </select>
             </label>
-            <label for="">设备状态
+            <label for=""><span>设备状态</span>
                 <select name="" id="device-status">
                     <option value="">全部</option>
                     <option value="0">正常</option>
@@ -104,7 +104,7 @@
 
     function fetch(a, b) {
         $.ajax({
-            url: "http://192.168.1.4:8080/zhll-ssm/fenyeBox",
+            url: "http://192.168.1.14:8080/zhll-ssm/fenyeBox",
             type: "POST",
             data: {
                 "boxno": $("#device-num").val(),
@@ -120,6 +120,7 @@
                 row_num = msg.boxlist.length;
                 col_num = $(".thead0 td").length;
                 total_page = msg.pagelist[0].totalPage;
+                $("#page-total").html(total_page);
                 for (var i = $("tr").length; i > 0; i--) {
                     if ($($("tr")[i]).attr("class") == "thead0") {
 
@@ -128,7 +129,6 @@
                     }
                 }
                 render_table(row_num, col_num);
-
                 page_num.empty();
                 set_page(a, total_page);
                 $.each(msg.boxlist, function(index, value) {
@@ -143,18 +143,15 @@
                     $($($("tr")[index + 1]).children()[8]).html(value.remarks);
                     var href = "coldChainEdit.html?" + value.boxno;
                     $($($("tr")[index + 1]).children()[9]).append('<a href="' + href + '">编辑</a>');
-                })
+                });
+                window.parent.user.height=0+"px";
+                window.parent.setIframeHeight(window.parent.user);
             }
         })
     }
     fetch(1, 10);
     </script>
     <script src="js/page.js"></script>
-    <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
-    }
-    </script>
 </body>
 
 </html>

@@ -14,18 +14,18 @@
     <div class="user-wrap">
         <div class="input-box">
             <div class="input-box1">
-                <label for="">人员编号
+                <label for=""><span>人员编号</span>
                     <input type="text" id="admin-id">
                 </label>
-                <label for="">操作人员
+                <label for=""><span>操作人员</span>
                     <input type="text" id="name">
                 </label>
-                <label for="">联系电话
+                <label for=""><span>联系电话</span>
                     <input type="tel" id="phone">
                 </label>
             </div>
             <div class="input-box1">
-                <label for="">用户类型
+                <label for=""><span>用户类型</span>
                     <select id="user-type">
                         <option value="">全部</option>
                         <option value="0">系统管理员</option>
@@ -33,7 +33,7 @@
                         <option value="2">代理商</option>
                     </select>
                 </label>
-                <label for="">所属机构
+                <label for=""><span>所属机构</span>
                     <select id="mec-name">
                         <option value="">全部</option>
                         <option value="浙一医院">浙一医院</option>
@@ -41,7 +41,7 @@
                         <option value="个人">个人</option>
                     </select>
                 </label>
-                <label for="">用户状态
+                <label for=""><span>用户状态</span>
                     <select id="user-status">
                         <option value="">全部</option>
                         <option value="0">正常</option>
@@ -95,6 +95,8 @@
     var col_num; //列数
     var render_table;
     var total_page;
+    var set_page;
+    var page_num = $(".page-num");
 
     function fetch(a, b) {
         $.ajax({
@@ -113,7 +115,10 @@
             success: function(msg) {
                 row_num = msg.Admlist.length;
                 col_num = $(".thead0 td").length;
-                // total_page=
+                total_page = msg.Totalpage;
+                $("#page-total").html(total_page);
+                page_num.empty();
+                set_page(a, total_page);
                 for (var i = $("tr").length - 1; i > 0; i--) {
                     $($("tr")[i]).remove();
                 };
@@ -129,17 +134,14 @@
                     var href = "userOperateEdit.html?adminid=" + msg.Admlist[index].adminid;
                     $($($("tr")[index + 1]).children()[7]).html('<a href="' + href + '">编辑</a>');
                 });
+                window.parent.user.height=0+"px";
+                window.parent.setIframeHeight(window.parent.user);
             }
         })
     }
     fetch(1, 10);
     </script>
     <script src="js/page.js"></script>
-    <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
-    }
-    </script>
 </body>
 
 </html>

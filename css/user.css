@@ -21,6 +21,10 @@ body {
     width: 100%;
 }
 
+.user-wrap input select {
+    
+}
+
 .input-box input,
 select {
     width: 120px;
@@ -30,12 +34,21 @@ select {
     margin-left: 5px;
     font-weight: 400;
     padding-left: 10px;
+    background-color: #ffffff;
 }
 
 label {
     font-weight: 400;
     height: 28px;
-    margin:0px 0px 15px 42px;
+    margin: 0px 0px 15px 42px;
+}
+
+.input-box span {
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    line-height: 28px;
+    text-align: left;
 }
 
 .btn {
@@ -69,20 +82,23 @@ table {
 }
 
 td {
-    padding: 5px 20px;
+    padding: 5px;
 }
 
 tr {
     height: 28px;
 }
-table a:hover{
-    color:#3399ff;
+
+table a:hover {
+    color: #3399ff;
 }
-#export input{
-    width:200px;
-    margin-left:10px;
+
+#export input {
+    width: 200px;
+    margin-left: 10px;
 }
-#export-btn{
+
+#export-btn {
     width: 70px;
     height: 30px;
     background-color: #3399ff;

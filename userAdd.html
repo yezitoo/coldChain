@@ -36,7 +36,7 @@
                     </label>
                 </div>
                 <div>
-                    <label for="">所属机构
+                    <label for=""><span>所属机构</span>
                         <select id="mec-name">
                             <option value="">全部</option>
                             <option value="浙一医院">浙一医院</option>
@@ -44,7 +44,7 @@
                             <option value="个人">个人</option>
                         </select>
                     </label>
-                    <label for="">操作权限
+                    <label for=""><span>操作权限</span>
                         <select id="privileges">
                             <option value="">全部</option>
                             <option value="0">开箱</option>
@@ -68,8 +68,8 @@
     <script>
     $("#add-confirm").click(function() {
         $.ajax({
-            type: "POST ",
-            url: "http://192.168.1.15:8080/zhll-ssm/insertUser",
+            type: "POST",
+            url: "http://192.168.1.14:8080/zhll-ssm/insertUser",
             data: {
                 "username": $("#user-name").val(),
                 "phone": $("#phone").val(),
@@ -79,7 +79,7 @@
                 "privileges": $("#privileges").val()
             },
             success: function() {
-                location.href = "http://192.168.1.15:8080/zhll-ssm/skipUser";
+                location.href = "user.html";
             }
         })
     })

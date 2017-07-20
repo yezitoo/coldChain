@@ -15,38 +15,38 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>机构编号</span>
-                        <input type="text">
+                        <input type="text" id="agency-id">
                     </label>
                     <label for=""><span>机构名称</span>
-                        <input type="text">
+                        <input type="text" id="agency-name">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>联系人</span>
-                        <input type="text">
+                        <input type="text" id="contacts">
                     </label>
                     <label for=""><span>联系电话</span>
-                        <input type="tel">
+                        <input type="tel" id="phone">
                     </label>
                 </div>
                 <div>
-                    <label for="" id="address"><span>地址</span>
-                        <input type="text">
+                    <label for="" id="address-wrap"><span>地址</span>
+                        <input type="text" id="address">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>机构类型</span>
-                        <select name="" id="">
-                            <option value="医院">医院</option>
-                            <option value="代理商">代理商</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="agency-type">
+                            <option value="">全部</option>
+                            <option value="0">医院</option>
+                            <option value="1">代理商</option>
                         </select>
                     </label>
                     <label for=""><span>机构状态</span>
-                        <select name="" id="">
-                            <option value="正常">正常</option>
-                            <option value="停用">停用</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="agency-status">
+                            <option value="">全部</option>
+                            <option value="0">正常</option>
+                            <option value="1">停用</option>
                         </select>
                     </label>
                 </div>
@@ -59,6 +59,52 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/match.js"></script>
+    <script>
+    var agency_id = window.location.href.split("?")[1];
+
+    function modify() {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/selectMec",
+            type: "POST",
+            data: {
+                "meccoding": agency_id
+            },
+            success: function(msg) {
+                $("#agency-id").val(msg[0].meccoding);
+                $("#agency-name").val(msg[0].mecname);
+                $("#contacts").val(msg[0].contacts);
+                $("#phone").val(msg[0].phone);
+                $("#address").val(msg[0].address);
+                match("agency-status", msg[0].msta);
+                match("agency-type", msg[0].mtype);
+            }
+        })
+    }
+
+    $(function() {
+        modify();
+    })
+
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/updateMec",
+            type: "POST",
+            data: {
+                "meccoding": $("#agency-id").val(),
+                "mecname": $("#agency-name").val(),
+                "contacts": $("#contacts").val(),
+                "phone": $("#phone").val(),
+                "address": $("#address").val(),
+                "mectype": $("#agency-type").val(),
+                "mecstatus": $("#agency-status").val()
+            },
+            success: function(msg) {
+                location.href = "agency.html";
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

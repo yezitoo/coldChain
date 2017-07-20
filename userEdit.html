@@ -39,17 +39,17 @@
                             <option value="3">个人</option>
                         </select>
                     </label>
-                    <label for="">所属机构
-                    <select id="mec-name">
-                        <option value="">全部</option>
-                        <option value="浙一医院">浙一医院</option>
-                        <option value="华东医药">华东医药</option>
-                        <option value="个人">个人</option>
-                    </select>
-                </label>
+                    <label for=""><span>所属机构</span>
+                        <select id="mec-name">
+                            <option value="">全部</option>
+                            <option value="浙一医院">浙一医院</option>
+                            <option value="华东医药">华东医药</option>
+                            <option value="个人">个人</option>
+                        </select>
+                    </label>
                 </div>
                 <div>
-                    <label for="">操作权限
+                    <label for=""><span>操作权限</span>
                         <select id="privileges">
                             <option value="">全部</option>
                             <option value="0">开箱</option>
@@ -58,11 +58,11 @@
                             <option value="3">个人</option>
                         </select>
                     </label>
-                    <label for="">用户状态
+                    <label for=""><span>用户状态</span>
                         <select id="user-status">
+                            <option value="">全部</option>
                             <option value="0">正常</option>
                             <option value="1">停用</option>
-                            <option value="">全部</option>
                         </select>
                     </label>
                 </div>
@@ -81,7 +81,7 @@
         var user_id = location_name.split("=")[1];
         $.ajax({
             type: "POST",
-            url: "http://192.168.1.6:8080/zhll-ssm/selectUser",
+            url: "http://192.168.1.14:8080/zhll-ssm/selectUser",
             data: {
                 "userid": user_id
             },
@@ -114,7 +114,7 @@
     $("#add-confirm").click(function() {
         $.ajax({
             type: "POST",
-            url: "http://192.168.1.15:8080/zhll-ssm/updateUser",
+            url: "http://192.168.1.14:8080/zhll-ssm/updateUser",
             data: {
                 "userid": $("#user-id").val(),
                 "username": $("#user-name").val(),
@@ -126,7 +126,7 @@
                 "userstatus": $("#user-status").val()
             },
             success: function() {
-                location.href = "http://192.168.1.15:8080/zhll-ssm/skipUser";
+                location.href = "user.html";
             }
         })
     })

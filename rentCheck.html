@@ -16,79 +16,65 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>派单号码</span>
-                        <input type="text">
+                        <input type="text" id="order-id">
                     </label>
                     <label for="" id="current_temp"><span>当前温度（度）</span>
-                        <input type="text"> </label>
+                        <input type="text" id="temp">
+                    </label>
                 </div>
                 <div>
+                    <label for=""><span>下单时间</span>
+                        <input type="text" id="order-time">
+                    </label>
                     <label for=""><span>派单时间</span>
-                        <input type="date">
-                    </label>
-                    <label for=""><span>开始运输时间</span>
-                        <input type="date">
+                        <input type="text" id="send-time">
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>接收人ID</span>
-                        <input type="text">
-                    </label>
                     <label for=""><span>接收人姓名</span>
-                        <input type="text">
+                        <input type="text" id="receive-name">
                     </label>
                     <label for=""><span>接收人电话</span>
-                        <input type="tel">
+                        <input type="text" id="receive-tel">
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>发货方ID</span>
-                        <input type="text">
+                    <label for=""><span>发货人姓名</span>
+                        <input type="text" id="send-name">
                     </label>
-                    <label for=""><span>发货方姓名</span>
-                        <input type="text">
+                    <label for=""><span>发货人电话</span>
+                        <input type="text" id="send-tel">
                     </label>
                 </div>
                 <hr>
                 <div>
-                    <label for=""><span>装箱人ID</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>装箱人姓名</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>装箱人电话</span>
-                        <input type="tel">
-                    </label>
-                </div>
-                <div>
-                    <label for=""><span>送货人ID</span>
-                        <input type="text">
-                    </label>
                     <label for=""><span>送货人姓名</span>
-                        <input type="text">
+                        <input type="text" id="delivery-name">
                     </label>
                     <label for=""><span>送货人电话</span>
-                        <input type="tel">
+                        <input type="text" id="delivery-tel">
                     </label>
                 </div>
                 <hr>
                 <div>
                     <label for=""><span>设备编号</span>
-                        <input type="text">
+                        <input type="text" id="box-id">
                     </label>
                     <label for=""><span>设备容量</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>所属用户</span>
-                        <input type="text">
+                        <input type="text" id="box-capacity">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>智能锁编号</span>
-                        <input type="text">
+                        <input type="text" id="lock-id">
                     </label>
-                    <label for="" id="hospital-name"><span>医院名称</span>
-                        <input type="text">
+                    <label for=""><span>医院名称</span>
+                        <input type="text" id="hospital-name">
+                    </label>
+                </div>
+                <div>
+                    <label for=""><span>所属用户</span>
+                        <input type="text" id="owner">
                     </label>
                 </div>
                 <hr>
@@ -101,12 +87,34 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/page.js"></script>
     <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
-    }
-    </script>
+    var order_id = window.location.href.split("?")[1];
+    $.ajax({
+        url: "http://192.168.1.3:8080/zhll-ssm/toupdateorder",
+        type: "POST",
+        data: {
+            "delno": order_id
+        },
+        success: function(msg) {
+            $("#order-id").val(msg[0].delno);
+            $("#temp").val(msg[0].cttemp);
+            $("#order-time").val(msg[0].foundtime);
+            $("#send-time").val(msg[0].sttime);
+            $("#receive-name").val(msg[0].conername);
+            $("#receive-tel").val(msg[0].conerphone);
+            $("#send-name").val(msg[0].conname);
+            $("#send-tel").val(msg[0].conphone);
+            $("#delivery-name").val(msg[0].delname);
+            $("#delivery-tel").val(msg[0].delphone);
+            $("#box-id").val(msg[0].boxno);
+            $("#box-capacity").val(msg[0].ccity + 'L');
+            $("#lock-id").val(msg[0].lkno);
+            $("#hospital-name").val(msg[0].mecname);
+            $("#owner").val(msg[0].bmname);
+        }
+    })
+
+   </script>
 </body>
 
 </html>

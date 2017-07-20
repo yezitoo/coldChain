@@ -14,33 +14,37 @@
     <div class="user-wrap">
         <div class="input-box">
             <div class="input-box1">
-                <label for="">机构编号
-                    <input type="text">
+                <label for=""><span>机构编号</span>
+                    <input type="text" id="agency-id">
                 </label>
-                <label for="">机构名称
-                    <input type="text">
+                <label for=""><span>机构名称</span>
+                    <select name="" id="agency-name">
+                        <option value="">全部</option>
+                        <option value="浙一医院">浙一医院</option>
+                        <option value="华东医药">华东医药</option>
+                        <option value="个人">个人</option>
+                    </select>
                 </label>
-                <label for="">机构状态
-                    <select name="" id="">
-                        <option value="正常">正常</option>
-                        <option value="停用">停用</option>
-                        <option value="全部">全部</option>
+                <label for=""><span>机构状态</span>
+                    <select name="" id="agency-status">
+                        <option value="">全部</option>
+                        <option value="0">正常</option>
+                        <option value="1">停用</option>
                     </select>
                 </label>
             </div>
             <div class="input-box2">
-                <label for="">机构类型
-                    <select name="" id="">
-                        <option value="全部">全部</option>
-                        <option value="医药">医药</option>
-                        <option value="医院">医院</option>
-                        <option value="供应商">供应商</option>
+                <label for=""><span>机构类型</span>
+                    <select name="" id="agency-type">
+                        <option value="">全部</option>
+                        <option value="0">医院</option>
+                        <option value="1">代理商</option>
                     </select>
                 </label>
             </div>
         </div>
         <div class="btn">
-            <button>查询</button>
+            <button id="query">查询</button>
             <button id="reset">重置</button>
             <button onclick="javascript:location.href='agencyAdd.html'">新增</button>
         </div>
@@ -73,11 +77,6 @@
             <span class="page-num">
                     <!-- <a href="">1</a>
                     <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
                     <a href="">8</a> -->
                 </span>
             <button id="pg-next">下一页</button>
@@ -86,12 +85,59 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/page.js"></script>
     <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
+    var row_num;
+    var col_num;
+    var set_page;
+    var render_table;
+    var total_page;
+    var page_num = $(".page-num");
+
+    function fetch(a, b) {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/fenyeMec",
+            type: "POST",
+            data: {
+                "meccoding": $("#agency-id").val(),
+                "mecname": $("#agency-name").val(),
+                "mecstatus": $("#agency-status").val(),
+                "mectype": $("#agency-type").val(),
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                row_num = msg.meclist.length;
+                col_num = $(".thead0 td").length;
+                total_page = msg.pagelist[0].totalPage;
+                $("#page-total").html(total_page);
+                page_num.empty();
+                set_page(a, total_page);
+                for (var i = $("tr").length; i > 0; i--) {
+                    $($("tr")[i]).remove();
+                }
+                render_table(row_num, col_num);
+                $.each(msg.meclist, function(index, value) {
+                    $($($("tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("tr")[index + 1]).children()[1]).html(value.meccoding);
+                    $($($("tr")[index + 1]).children()[2]).html(value.mecname);
+                    $($($("tr")[index + 1]).children()[3]).html(value.mtype);
+                    $($($("tr")[index + 1]).children()[4]).html(value.address);
+                    $($($("tr")[index + 1]).children()[5]).html(value.contacts);
+                    $($($("tr")[index + 1]).children()[6]).html(value.phone);
+                    $($($("tr")[index + 1]).children()[7]).html(value.msta);
+                    var href = "agencyEdit.html?" + value.meccoding;
+                    $($($("tr")[index + 1]).children()[8]).html('<a href="' + href + '">编辑<a>');
+                });
+                window.parent.user.height = 0 + "px";
+                window.parent.setIframeHeight(window.parent.user);
+            }
+        })
     }
+    $(function() {
+        fetch(1, 10);
+    })
     </script>
+    <script src="js/page.js"></script>
 </body>
 
 </html>

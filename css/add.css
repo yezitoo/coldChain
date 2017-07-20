@@ -17,7 +17,7 @@ body {
     margin-top: 15px;
 }
 
-.add-wrap  input,
+.add-wrap input,
 select {
     width: 160px;
     height: 28px;
@@ -26,15 +26,16 @@ select {
     margin-left: 5px;
     font-weight: 400;
     padding-left: 10px;
+    background-color: #ffffff;
 }
 
-.add-wrap  label {
+.add-wrap label {
     width: 230px;
     font-weight: 400;
     margin: 0px 0px 15px 42px;
 }
 
-.add-wrap  span {
+.add-wrap span {
     display: inline-block;
     width: 60px;
     height: 28px;
@@ -55,12 +56,13 @@ select {
     outline: none;
     color: #fff;
     padding: 8px 20px;
-    margin:0px 20px;
+    margin: 0px 20px;
 }
 
-#reset{
-    margin:0 30px;
+#reset {
+    margin: 0 30px;
 }
+
 #remark {
     width: 506px;
 }
@@ -80,6 +82,8 @@ select {
 #origin input {
     width: 436px;
 }
+
+
 /*#address {
     width: 506px;
 }
@@ -87,49 +91,85 @@ select {
 #address input {
     width: 436px;
 }*/
-#basicDataAdd label{
-    width:260px;
+
+#basicDataAdd label {
+    width: 260px;
 }
-#basicDataAdd span{
-    width:87px;
+
+#basicDataAdd span {
+    width: 87px;
 }
+
 .mail-wrap {
     width: 100%;
     margin: 15px 0px 0px 42px;
 }
-table{
-    width:92%!important;
-    text-align:center;
+
+table {
+    width: 92%!important;
+    text-align: center;
 }
-thead tr{
-    background-color:#eee;
+
+thead tr {
+    background-color: #eee;
 }
-th{
-    font-weight:400;
-    text-align:center;
+
+th {
+    font-weight: 400;
+    text-align: center;
 }
-.glyphicon-envelope{
-    color:#f77448;
-    font-size:20px;
+
+.glyphicon-envelope {
+    color: #f77448;
+    font-size: 20px;
 }
-.glyphicon-ok{
-    color:#3399ff;
-    font-size:20px;
+
+.glyphicon-ok {
+    color: #3399ff;
+    font-size: 20px;
 }
-.normal{
-    color:#333;
+
+.normal {
+    color: #333;
 }
-.warn{
-    color:#ff0000;
+
+.warn {
+    color: #ff0000;
 }
-.fail{
-    color:#3399ff;
+
+.fail {
+    color: #3399ff;
 }
-.mail_mes{
-    width:92%;
+
+.mail_mes {
+    width: 92%;
     margin-bottom: 15px;
-    text-align:right;
+    text-align: right;
 }
-.mail_unread{
-    color:#ff0000;
+
+.mail_unread {
+    color: #ff0000;
+}
+
+.cover-wrap {
+    display: none;
+}
+
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #7b7b7b;
+    opacity: 0.6;
+}
+
+.cover-cont {
+    width: 600px;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -300px;
+    background-color: #ffffff;
 }

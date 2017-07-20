@@ -1,116 +1,154 @@
  * {
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    font-size: 14px;
-    color: #333;
-    height: 100%;
-    font-family: "微软雅黑";
-    font-weight: normal;
-}
-
-.add-wrap {
-    width: 100%;
-    margin-top: 15px;
-}
-
-.input-box1 input,
-select {
-    width: 120px;
-    height: 28px;
-    outline: none;
-    border: 1px solid #ccc;
-    font-weight: 400;
-    padding-left: 10px;
-    /*margin-left:5px;*/
-}
-
-.add-wrap  label {
-    width: 226px;
-    font-weight: 400;
-    margin: 0px 0px 15px 42px;
-}
-
-.input-box1 span {
-    display: inline-block;
-    width: 98px;
-    height: 28px;
-    line-height: 28px;
-    text-align: left;
-}
-
-.add-wrap hr {
-    border: 1px solid #eee;
-    margin: 0 0 15px 0;
-}
-
-#temp input {
-    width: 55px;
-}
-
-.input-box1 button {
-    width: 70px;
-    height: 30px;
-    background-color: #3399ff;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    color: #fff;
-    margin-left: 42px;
-}
-
-#hospital-name {
-    width: 500px;
-}
-
-#hospital-name select {
-    width: 392px;
-}
-#hospital-name input {
-    width: 392px;
-}
-table {
-    width: 92%;
-    margin-left: 42px;
-    text-align: center;
-}
-
-td {
-    padding: 5px 20px;
-}
-
-td div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-tr {
-    height: 28px;
-}
-
-#table input {
-    width: 15px;
-    height: 15px;
-}
-
-.input-box2{
-    display:flex;
-    justify-content:center;
-}
-.input-box2 button {
-    background-color: #6699ff;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    color: #fff;
-    padding: 8px 20px;
-    margin:40px 0px 30px 0px;
-}
-
- #back{
-    margin-left:60px;
+     margin: 0;
+     padding: 0;
+ }
+ 
+ html,
+ body {
+     font-size: 14px;
+     color: #333;
+     height: 100%;
+     font-family: "微软雅黑";
+     font-weight: normal;
+ }
+ 
+ .add-wrap {
+     width: 100%;
+     margin-top: 15px;
+ }
+ 
+ .input-box1 input,
+ select {
+     width: 120px;
+     height: 28px;
+     outline: none;
+     border: 1px solid #ccc;
+     font-weight: 400;
+     padding-left: 10px;
+     /*margin-left:5px;*/
+     background-color: #ffffff;
+ }
+ 
+ .add-wrap label {
+     width: 226px;
+     font-weight: 400;
+     margin: 0px 0px 15px 42px;
+ }
+ 
+ .input-box1 span {
+     display: inline-block;
+     width: 98px;
+     height: 28px;
+     line-height: 28px;
+     text-align: left;
+ }
+ 
+ .add-wrap hr {
+     border: 1px solid #eee;
+     margin: 0 0 15px 0;
+ }
+ 
+ #temp input {
+     width: 55px;
+ }
+#address-wrap{
+     width:496px;
+ }
+ #address{
+     width:392px;
+ }
+ .input-box1 button {
+     width: 70px;
+     height: 30px;
+     background-color: #3399ff;
+     border-radius: 5px;
+     border: none;
+     outline: none;
+     color: #fff;
+     margin-left: 42px;
+ }
+ 
+ table {
+     width: 92%;
+     margin-left: 42px;
+     text-align: center;
+ }
+ 
+ td {
+     padding: 5px 20px;
+ }
+ 
+ td div {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ tr {
+     height: 28px;
+ }
+ 
+ #table input {
+     width: 15px;
+     height: 15px;
+ }
+ 
+ .input-box2 {
+     display: flex;
+     justify-content: center;
+     padding-bottom: 50px;
+ }
+ 
+ .input-box2 button {
+     background-color: #6699ff;
+     border-radius: 5px;
+     border: none;
+     outline: none;
+     color: #fff;
+     padding: 8px 20px;
+     margin: 40px 0px 30px 0px;
+ }
+ 
+ #back {
+     margin-left: 60px;
+ }
+ 
+ .page {
+     padding-bottom: 0px!important;
+ }
+ 
+ .cover-wrap {
+     display: none;
+ }
+ 
+ .cover {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     min-height: 100%;
+     background-color: #7b7b7b;
+     opacity: 0.6;
+ }
+ 
+ .cover-cont {
+     width: 600px;
+     position: fixed;
+     top: 200px;
+     left: 50%;
+     margin-left: -300px;
+     background-color:#ffffff;
+ }
+ 
+ #cover-tab {
+     margin-left: 0;
+     width: 100%;
+ }
+  
+ #add-confirm1 {
+     margin: 0 20px;
+ }
+ 
+ #back1 {
+     margin: 0 20px;
  }

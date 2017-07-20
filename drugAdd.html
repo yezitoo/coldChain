@@ -15,38 +15,39 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>药品编号</span>
-                        <input type="text">
+                        <input type="text" id="drug-id">
                     </label>
                     <label for=""><span>药品名称</span>
-                        <input type="text">
+                        <input type="text" id="drug-name">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>化学名称</span>
-                        <input type="text">
+                        <input type="text" id="chemical-name">
                     </label>
-                    <label for=""><span>药品状态</span>
-                        <select name="" id="">
-                            <option value="正常">正常</option>
-                            <option value="停用">停用</option>
-                            <option value="全部">全部</option>
+                    <label for=""><span>启用状态</span>
+                        <select name="" id="drug-status">
+                            <option value="">全部</option>
+                            <option value="0">启用</option>
+                            <option value="1">停用</option>
                         </select>
                     </label>
                 </div>
                 <div>
                     <label for="" id="temp"><span>温度范围</span>
-                        <input type="text">-
-                        <input type="text">
+                        <input type="text" id="temp-low">-
+                        <input type="text" id="temp-high">
                     </label>
                 </div>
                 <div>
-                    <label for="" id="origin"><span>药品产地</span>
-                        <input type="text">
+                    <label for=""><span>药品产地</span>
+                        <input type="text" id="drug-origin">
                     </label>
                 </div>
             </div>
             <div class="input-box2">
                 <button id="add-confirm">确认</button>
+                <button id="reset">重置</button>
                 <button id="back" onclick="javascript:location.href='drug.html'">返回</button>
             </div>
         </div>
@@ -54,6 +55,26 @@
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="js/add.js"></script>
+    <script>
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/insertDrug",
+            type: "POST",
+            data: {
+                "drugno": $("#drug-id").val(),
+                "drugname": $("#drug-name").val(),
+                "chemname": $("#chemical-name").val(),
+                "producer": $("#drug-origin").val(),
+                "enablestate": $("#drug-status").val(),
+                "pemperlow": $("#temp-low").val(),
+                "pemperhigh": $("temp-high").val()
+            },
+            success: function(msg) {
+                location.href = "drug.html";
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

@@ -115,9 +115,6 @@ $(function() {
 
     set_page = setPage;
 
-    //文档加载后首次调用
-    // setPage(pageCurrent, total_page);
-
     //上一页的点击事件
     function pg_prev_click(event, total_page) {
         pageCurrent = parseInt($(".page-num-st").html());
@@ -154,17 +151,6 @@ $(function() {
         return false;
     })
 
-    //一加载进来如果总页数等于1时，禁止上一页和下一页的点击事件
-    if (total_page == 1) {
-        pg_prev.attr("disabled", true);
-        pg_next.attr("disabled", true);
-        pg_prev.css("background-color", "#eee");
-        pg_next.css("background-color", "#eee");
-    }
-
-    // 动态设置总条数
-    $("#page-total").html(total_page);
-
     //确认按钮的点击事件
     confirm.click(function() {
         input_page_num = input_page.val();
@@ -191,7 +177,7 @@ $(function() {
                     tr.css("background-color", "#eee");
                 }
             }
-            $(".thead0").parent("tbody").parent("table").append(tr);
+            $(".thead0").parent("tbody").append(tr);
         }
     }
     //render_table在当前网页的script中已经定义过（该script在page.js之前加载），在此将此方法赋值给变量render_table
@@ -224,6 +210,14 @@ $(function() {
                 $("#user-status").val(0);
             } else if ($($(".input-box select")[i]).attr("id") == "device-status") {
                 $("#device-status").val(0);
+            } else if ($($(".input-box select")[i]).attr("id") == "drug-status") {
+                $("#drug-status").val(0);
+            } else if ($($(".input-box select")[i]).attr("id") == "agency-status") {
+                $("#agency-status").val(0);
+            } else if ($($(".input-box select")[i]).attr("id") == "lock-status") {
+                $("#lock-status").val(0);
+            } else if ($($(".input-box select")[i]).attr("id") == "box-status") {
+                $("#box-status").val(0);
             } else {
                 $($(".input-box select")[i]).val("");
             };

@@ -14,28 +14,29 @@
     <div class="user-wrap">
         <div class="input-box">
             <div class="input-box1">
-                <label for="">药品名称
-                    <input type="text">
+                <label for=""><span>药品名称</span>
+                    <input type="text" id="drug-name">
                 </label>
-                <label for="">化学名称
-                    <input type="text">
+                <label for=""><span>化学名称</span>
+                    <input type="text" id="chemical-name">
                 </label>
-                <label for="">药品产地
-                    <input type="text">
+                <label for=""><span>药品产地</span>
+                    <input type="text" id="drug-origin">
                 </label>
             </div>
             <div class="input-box2">
-                <label for="">启用状态
-                    <select name="" id="">
-                        <option value="正常">正常</option>
-                        <option value="停用">停用</option>
-                        <option value="全部">全部</option>
+                <label for=""><span>启用状态</span>
+                    <select name="" id="drug-status">
+                        <option value="">全部</option>
+                        <option value="0">启用</option>
+                        <option value="1">停用</option>
                     </select>
                 </label>
             </div>
         </div>
         <div class="btn">
-            <button>查询</button>
+            <button id="query">查询</button>
+            <button id="reset">重置</button>
             <button onclick="javascript:location.href='drugAdd.html'">新增</button>
         </div>
         <hr>
@@ -67,11 +68,6 @@
             <span class="page-num">
                     <!-- <a href="">1</a>
                     <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
                     <a href="">8</a> -->
                 </span>
             <button id="pg-next">下一页</button>
@@ -80,12 +76,60 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/page.js"></script>
+    <script src="js/match.js"></script>
     <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
+    var page_num = $(".page-num");
+    var set_page;
+    var total_page;
+    var render_table;
+    var row_num;
+    var col_num;
+
+    function fetch(a, b) {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/fenyeDrug",
+            type: "POST",
+            data: {
+                "drugname": $("#drug-name").val(),
+                "chemname": $("#chemical-name").val(),
+                "producer": $("#drug-origin").val(),
+                "enablestate": $("#drug-status").val(),
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                total_page = msg.pagelist[0].totalPage;
+                row_num = msg.druglist.length;
+                col_num = $(".thead0 td").length;
+                $("#page-total").html(total_page);
+                page_num.empty();
+                set_page(a, total_page);
+                for (var i = $("tr").length; i > 0; i--) {
+                    $($("tr")[i]).remove();
+                }
+                render_table(row_num, col_num);
+                $.each(msg.druglist, function(index, value) {
+                    $($($("tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("tr")[index + 1]).children()[1]).html(value.drugno);
+                    $($($("tr")[index + 1]).children()[2]).html(value.drugname);
+                    $($($("tr")[index + 1]).children()[3]).html(value.chemname);
+                    $($($("tr")[index + 1]).children()[4]).html(value.ensta);
+                    $($($("tr")[index + 1]).children()[5]).html(value.producer);
+                    $($($("tr")[index + 1]).children()[6]).html(value.pemperlow);
+                    $($($("tr")[index + 1]).children()[7]).html(value.pemperhigh);
+                    var href = "drugEdit.html?" + value.drugno;
+                    $($($("tr")[index + 1]).children()[8]).html('<a href="' + href + '">编辑</a>');
+                });
+                window.parent.user.height=0+"px";
+                window.parent.setIframeHeight(window.parent.user);
+            }
+        })
     }
+    $(function() {
+        fetch(1, 10);
+    })
     </script>
+    <script src="js/page.js"></script>
 </body>
 
 </html>

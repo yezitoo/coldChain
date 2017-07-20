@@ -15,29 +15,28 @@
             <div class="input-box1">
                 <div>
                     <label for=""><span>设备编号</span>
-                        <input type="text">
+                        <input type="text" id="lock-id">
                     </label>
                     <label for=""><span>设备类型</span>
-                        <input type="text">
+                        <input type="text" id="lock-type">
                     </label>
                 </div>
                 <div>
                     <label for=""><span>箱体编号</span>
-                        <input type="text">
+                        <input type="text" id="box-id">
                     </label>
                     <label for=""><span>设备状态</span>
-                        <select name="" id="">
-                            <option value="正常">正常</option>
-                            <option value="停用">停用</option>
-                            <option value="异常">异常</option>
-                            <option value="维修">维修</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="lock-status">
+                            <option value="">全部</option>
+                            <option value="0">正常</option>
+                            <option value="1">异常</option>
+                            <option value="2">停用</option>
                         </select>
                     </label>
                 </div>
                 <div>
                     <label for="" id="remark"><span>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</span>
-                        <input type="text">
+                        <input type="text" id="remarks">
                     </label>
                 </div>
             </div>
@@ -47,6 +46,49 @@
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/match.js"></script>
+    <script>
+    function modify() {
+        var location_name = window.location.href;
+        var lock_id = location_name.split("=")[1];
+        $.ajax({
+            url: "http://192.168.1.3:8080/zhll-ssm/toupdateluck",
+            type: "POST",
+            data: {
+                "lockno": lock_id
+            },
+            success: function(msg) {
+                $("#lock-id").val(msg[0].lockno);
+                $("#lock-type").val(msg[0].lockmodel);
+                $("#box-id").val(msg[0].boxno);
+                $("#remarks").val(msg[0].remarks);
+                match("lock-status", msg[0].lksta);
+            },
+        });
+    }
+    $(function() {
+        modify();
+    })
+
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.3:8080/zhll-ssm/luckupdate",
+            type: "POST",
+            data: {
+                "lockno": $("#lock-id").val(),
+                "lockmodel": $("#lock-type").val(),
+                "boxno": $("#box-id").val(),
+                "lockstate": $("#lock-status").val(),
+                "remarks": $("#remarks").val()
+            },
+            success: function() {
+                location.href = "lock.html";
+            }
+        });
+    })
+    </script>
 </body>
 
 </html>

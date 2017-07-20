@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <title>租赁管理</title>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
     <link rel="stylesheet" href="css/user.css">
     <link rel="stylesheet" href="css/page.css">
 </head>
@@ -14,41 +15,44 @@
     <div class="user-wrap">
         <div class="input-box">
             <div class="input-box1">
-                <label for="">派单号码
-                    <input type="text">
+                <label for=""><span>派单号码</span>
+                    <input type="text" id="order-id">
                 </label>
-                <label for="">派单时间
-                    <input type="date">-
-                    <input type="date">
+                <label for=""><span>派单时间</span>
+                    <input type="text" id="time-start">-
+                    <input type="text" id="time-end">
                 </label>
-                <label for="">订单状态
-                    <select name="" id="">
-                        <option value="已接收">已接收</option>
-                        <option value="已发货">已发货</option>
-                        <option value="运输中">运输中</option>
-                        <option value="已取消">已取消</option>
+                <label for=""><span>订单状态</span>
+                    <select name="" id="order-status">
+                        <option value="">全部</option>
+                        <option value="0">已下单</option>
+                        <option value="1">已发货</option>
+                        <option value="2">已收货</option>
+                        <option value="3">取消</option>
                     </select>
                 </label>
             </div>
             <div class="input-box2">
-                <label for="">目标用户
-                    <input type="text">
+                <label for=""><span>目标用户</span>
+                    <input type="text" id="name">
                 </label>
-                <label for="">用户电话
-                    <input type="tel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for=""><span>用户电话</span>
+                    <input type="tel" id="phone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </label>
-                <label for="">箱体状态
-                    <select name="" id="">
-                        <option value="正常">正常</option>
-                        <option value="温度异常">温度异常</option>
-                        <option value="锁异常">锁异常</option>
-                        <option value="全部">全部</option>
+                <label for=""><span>箱体状态</span>
+                    <select name="" id="box-status">
+                        <option value="">全部</option>
+                        <option value="0">正常</option>
+                        <option value="1">异常</option>
+                        <option value="2">停用</option>
+                        <option value="3">维修</option>
                     </select>
                 </label>
             </div>
         </div>
         <div class="btn">
-            <button>查询</button>
+            <button id="query">查询</button>
+            <button id="reset">重置</button>
             <button onclick="javascript:location.href='rentAdd1.html'">医院新增</button>
             <button onclick="javascript:location.href='rentAdd2.html'">个人新增</button>
         </div>
@@ -82,12 +86,6 @@
             <button id="pg-prev">上一页</button>
             <span class="page-num">
                     <!-- <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
                     <a href="">8</a> -->
                 </span>
             <button id="pg-next">下一页</button>
@@ -96,12 +94,95 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/page.js"></script>
+    <script src="js/jquery.datetimepicker.full.js"></script>
     <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
+    //日期组件--起始时间设置
+    $('#time-start').datetimepicker({
+        timepicker: false,
+        yearStart: 2017,
+        yearEnd: 2025,
+        format: 'Y/m/d',
+        formatDate: 'Y/m/d',
+    });
+
+    //日期组件--结束时间设置
+    $('#time-end').datetimepicker({
+        lang: 'ch',
+        timepicker: false,
+        yearStart: 2017,
+        yearEnd: 2025,
+        format: 'Y/m/d',
+        formatDate: 'Y/m/d',
+    });
+
+    //控制日期组件中文显示
+    $.datetimepicker.setLocale('ch');
+    var time_start;
+    var time_end;
+    $("#time-start").on("blur", function() {
+        time_start = $("#time-start").val().replace(/\//g, "-");
+    })
+
+    $("#time-end").on("blur", function() {
+        time_end = $("#time-end").val().replace(/\//g, "-");
+    })
+
+    var row_num; //行数
+    var col_num; //列数
+    var render_table;
+    var total_page;
+    var set_page;
+    var page_num = $(".page-num");
+
+    function fetch(a, b) {
+        $.ajax({
+            url: "http://192.168.1.3:8080/zhll-ssm/orderdata",
+            type: "POST",
+            data: {
+                "delno": $("#order-id").val(),
+                "starttime": time_start,
+                "endtime": time_end,
+                "orderstatus": $("#order-status").val(),
+                "conername": $("#name").val(),
+                "conerphone": $("#phone").val(),
+                "boxstatus": $("#box-status").val(),
+                "number": a,
+                "pagesize": b
+            },
+            success: function(msg) {
+                row_num = msg.OrderList.length;
+                col_num = $(".thead0 td").length;
+                total_page = msg.Totalpage;
+                $("#page-total").html(total_page);
+                page_num.empty();
+                set_page(a, total_page);
+                for (var i = $("tr").length - 1; i > 0; i--) {
+                    $($("tr")[i]).remove();
+                };
+                render_table(row_num, col_num);
+                $.each(msg.OrderList, function(index, value) {
+                    $($($("tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("tr")[index + 1]).children()[1]).html(msg.OrderList[index].delno);
+                    $($($("tr")[index + 1]).children()[2]).html(msg.OrderList[index].sttime);
+                    $($($("tr")[index + 1]).children()[3]).html(msg.OrderList[index].enttime);
+                    $($($("tr")[index + 1]).children()[4]).html(msg.OrderList[index].ccity + "L");
+                    $($($("tr")[index + 1]).children()[5]).html(msg.OrderList[index].odsta);
+                    $($($("tr")[index + 1]).children()[6]).html(msg.OrderList[index].conerphone);
+                    $($($("tr")[index + 1]).children()[7]).html(msg.OrderList[index].showbosta);
+                    $($($("tr")[index + 1]).children()[8]).html(msg.OrderList[index].conername);
+                    var href = "http://192.168.1.3:8080/zhll-ssm/toexcel?id=" + msg.OrderList[index].delno;
+                    $($($("tr")[index + 1]).children()[9]).html('<a href="' + href + '">导出</a>');
+                    var href1 = "rentCheck.html?" + msg.OrderList[index].delno;
+                    $($($("tr")[index + 1]).children()[10]).html('<a href="' + href1 + '">查看</a>');
+                });
+                window.parent.user.height=0+"px";
+                window.parent.setIframeHeight(window.parent.user);
+            }
+        })
     }
+    fetch(1, 10);
     </script>
+    <script src="js/page.js"></script>
 </body>
 
 </html>

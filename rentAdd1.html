@@ -15,81 +15,74 @@
         <div>
             <div class="input-box1">
                 <div>
-                    <label for=""><span>派单号码</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>派单时间</span>
-                        <input type="date">
+                    <label for=""><span>医院名称</span>
+                        <select name="" id="hospital">
+                            <option value="">全部</option>
+                            <option value="浙一医院">浙一医院</option>
+                            <option value="华东医药">华东医药</option>
+                        </select>
                     </label>
                     <label for="" id="temp"><span>预警温度（度）</span>
-                        <input type="text">-
-                        <input type="text">
-                    </label>
-                </div>
-                <div>
-                    <label for=""><span>接收人ID</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>接收人姓名</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>接收人电话</span>
-                        <input type="text">
+                        <input type="text" id="temp-low">-
+                        <input type="text" id="temp-high">
                     </label>
                 </div>
                 <hr>
                 <div>
-                    <label for=""><span>装箱人ID</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>装箱人姓名</span>
-                        <input type="text">
-                    </label>
-                    <label for=""><span>装箱人电话</span>
-                        <input type="text">
+                    <label for="" id="address-wrap"><span>接收地址</span>
+                        <input type="text" id="address">
                     </label>
                 </div>
                 <div>
-                    <label for=""><span>送货人ID</span>
-                        <input type="text">
+                    <input type="hidden" id="receive-id" disabled>
+                    <label for=""><span>接收人姓名</span>
+                        <input type="text" id="receive-name" disabled>
                     </label>
+                    <label for=""><span>接收人电话</span>
+                        <input type="text" id="receive-tel" disabled>
+                    </label>
+                    <button id="receive-btn">添加</button>
+                </div>
+                <div>
+                    <input type="hidden" id="send-id" disabled>
+                    <label for=""><span>发货人姓名</span>
+                        <input type="text" id="send-name" disabled>
+                    </label>
+                    <label for=""><span>发货人电话</span>
+                        <input type="text" id="send-tel" disabled>
+                    </label>
+                    <button id="send-btn">添加</button>
+                </div>
+                <div>
+                    <input type="hidden" id="delivery-id" disabled>
                     <label for=""><span>送货人姓名</span>
-                        <input type="text">
+                        <input type="text" id="delivery-name" disabled>
                     </label>
                     <label for=""><span>送货人电话</span>
-                        <input type="text">
+                        <input type="text" id="delivery-tel" disabled>
                     </label>
+                    <button id="delivery-btn">添加</button>
                 </div>
                 <hr>
                 <div>
                     <label for=""><span>设备容量</span>
-                        <select name="" id="">
-                            <option value="5升">5升</option>
-                            <option value="10升">10升</option>
-                            <option value="25升">25升</option>
-                            <option value="45升">45升</option>
-                            <option value="全部">全部</option>
+                        <select name="" id="box-capacity">
+                            <option value="">全部</option>
+                            <option value="5">5升</option>
+                            <option value="10">10升</option>
+                            <option value="25">25升</option>
+                            <option value="45">45升</option>
                         </select>
                     </label>
                     <label for=""><span>设备类型</span>
-                        <input type="text">
+                        <input type="text" id="box-type">
                     </label>
-                </div>
-                <div>
-                    <label for="" id="hospital-name"><span>医院名称</span>
-                        <select name="" id="">
-                            <option value="浙一医院">浙一医院</option>
-                            <option value="浙二医院">浙二医院</option>
-                            <option value="市一医院">市一医院</option>
-                            <option value="市二医院">市二医院</option>
-                        </select>
-                    </label>
-                    <button>查询</button>
+                    <button id="query">查询</button>
                 </div>
                 <hr>
             </div>
             <table border="1" id="table">
-                <tr style="background-color:#169bd5;color:#fff;">
+                <tr style="background-color:#169bd5;color:#fff;" class="thead0">
                     <td>序号</td>
                     <td>设备编号</td>
                     <td>设备类型</td>
@@ -97,84 +90,10 @@
                     <td>设备状态</td>
                     <td>分配使用</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
-                <tr bgcolor="#eee">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div>
-                            <input type="checkbox"><span>使用</span></div>
-                    </td>
-                </tr>
             </table>
             <div class="page">
                 <button id="pg-prev">上一页</button>
                 <span class="page-num">
-                    <!-- <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href="">6</a>
-                    <a href="">7</a>
-                    <a href="">8</a> -->
                 </span>
                 <button id="pg-next">下一页</button>
                 <span class="page-skip"><em>共<b id="page-total"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num" min=1><em>页</em><button id="confirm">确定</button></span>
@@ -185,15 +104,238 @@
             </div>
         </div>
     </div>
+    <div class="cover-wrap">
+        <div class="cover">
+        </div>
+        <div class="cover-cont">
+            <table border="1" id="cover-tab">
+                <tr style="background-color:#169bd5;color:#fff;" class="thead1">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="display:none"></td>
+                </tr>
+            </table>
+            <div class="page1">
+                <button id="pg-prev1">上一页</button>
+                <span class="page-num1">
+                    </span>
+                <button id="pg-next1">下一页</button>
+                <span class="page-skip1"><em>共<b id="page-total1"></b>页&nbsp;&nbsp;到第</em><input type="number" id="input-num1" min=1><em>页</em><button id="confirm1">确定</button></span>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/page.js"></script>
-    <script src="js/add.js"></script>
     <script>
-    window.onload = function() {
-        window.parent.setIframeHeight(window.parent.user);
+    //新增页面查询设备
+    var total_page;
+    var render_table;
+    var row_num;
+    var col_num;
+    var set_page;
+    var page_num = $(".page-num");
+    var box_num;
+
+    function fetch(a, b) {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/boxToOrder",
+            type: "POST",
+            data: {
+                "capacity": $("#box-capacity").val(),
+                "boxmodel": $("#box-type").val(),
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                row_num = msg.boxlist.length;
+                col_num = $(".thead0 td").length;
+                total_page = msg.pagelist[0].totalPage;
+                $("#page-total").html(total_page);
+                for (var i = $("#table tr").length; i > 0; i--) {
+                    if ($($("#table tr")[i]).attr("class") == "thead0") {
+
+                    } else {
+                        $($("#table tr")[i]).remove();
+                    }
+                }
+                render_table(row_num, col_num);
+
+                page_num.empty();
+                set_page(a, total_page);
+                $.each(msg.boxlist, function(index, value) {
+                    $($($("#table tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("#table tr")[index + 1]).children()[1]).html(value.boxno);
+                    $($($("#table tr")[index + 1]).children()[2]).html(value.boxmodel);
+                    $($($("#table tr")[index + 1]).children()[3]).html(value.capacity + "L");
+                    $($($("#table tr")[index + 1]).children()[4]).html(value.sta);
+                    $($($("#table tr")[index + 1]).children()[5]).html('<div> <input type = "checkbox"> <span> 使用 </span></div> ');
+                });
+                window.parent.user.height = 0 + "px";
+                window.parent.setIframeHeight(window.parent.user);
+                //设置checkbox的单选事件
+                var checkbox = $("input[type=checkbox]");
+                for (var i = 0; i < checkbox.length; i++) {
+                    checkbox[i].onchange = function() {
+                        for (var i = 0; i < checkbox.length; i++) {
+                            checkbox[i].checked = false;
+                        }
+                        this.checked = true;
+                        box_num = $($(this).parent().parent().parent().children()[1]).html();
+                    }
+                }
+            }
+        })
     }
+    fetch(1, 10);
+
+
+    //添加接收人、发货人、送货人
+    var total_page1;
+    var render_table1;
+    var row_num1;
+    var col_num1;
+    var set_page1;
+    var page_num1 = $(".page-num1");
+    var peo_type;
+
+
+    function fetch1(a, b) {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/userToOrder",
+            type: "POST",
+            data: {
+                "mecname": $("#hospital").val(),
+                "peotype": peo_type,
+                "page": a,
+                "size": b
+            },
+            success: function(msg) {
+                row_num1 = msg.userlist.length;
+                col_num1 = $(".thead1 td").length;
+                total_page1 = msg.pagelist[0].totalPage;
+                $("#page-total1").html(total_page1);
+                for (var i = $("#cover-tab tr").length; i > 0; i--) {
+                    if ($($("#cover-tab tr")[i]).attr("class") == "thead1") {} else {
+                        $($("#cover-tab tr")[i]).remove();
+                    }
+                }
+                render_table1(row_num1, col_num1);
+                page_num1.empty();
+                set_page1(a, total_page1);
+                $.each(msg.userlist, function(index, value) {
+
+                    if (peo_type == 2) {
+                        $($($("#cover-tab tr")[0]).children()[0]).html("编号");
+                        $($($("#cover-tab tr")[0]).children()[1]).html("接收人姓名");
+                        $($($("#cover-tab tr")[0]).children()[2]).html("接收人电话");
+                    } else
+                    if (peo_type == 0) {
+                        $($($("#cover-tab tr")[0]).children()[0]).html("编号");
+                        $($($("#cover-tab tr")[0]).children()[1]).html("发货人姓名");
+                        $($($("#cover-tab tr")[0]).children()[2]).html("发货人电话");
+                    } else {
+                        $($($("#cover-tab tr")[0]).children()[0]).html("编号");
+                        $($($("#cover-tab tr")[0]).children()[1]).html("送货人姓名");
+                        $($($("#cover-tab tr")[0]).children()[2]).html("送货人电话");
+                    }
+                    $($($("#cover-tab tr")[index + 1]).children()[0]).html(index + 1);
+                    $($($("#cover-tab tr")[index + 1]).children()[1]).html(value.username);
+                    $($($("#cover-tab tr")[index + 1]).children()[2]).html(value.phone);
+                    $($($("#cover-tab tr")[index + 1]).children()[3]).html(value.userid);
+                    $($($("#cover-tab tr")[index + 1]).children()[3]).css("display", "none");
+                });
+
+                $("#cover-tab tr").each(function() {
+                    if ($(this).attr("class") != "thead1") {
+                        $(this).dblclick(function() {
+                            $(".cover-wrap").css("display", "none");
+                            var name = $($(this).children()[1]).html();
+                            var tel = $($(this).children()[2]).html();
+                            var id = $($(this).children()[3]).html();
+                            if (peo_type == 2) {
+                                $("#receive-id").val(id);
+                                $("#receive-name").val(name);
+                                $("#receive-tel").val(tel);
+                            } else if (peo_type == 0) {
+                                $("#send-id").val(id);
+                                $("#send-name").val(name);
+                                $("#send-tel").val(tel);
+                            } else {
+                                $("#delivery-id").val(id);
+                                $("#delivery-name").val(name);
+                                $("#delivery-tel").val(tel);
+                            }
+                        })
+                    }
+                })
+
+                window.parent.user.height = 0 + "px";
+                window.parent.setIframeHeight(window.parent.user);
+            }
+        })
+    }
+
+    function peo(btn) {
+        switch (btn) {
+            case "receive-btn":
+                peo_type = 2;
+                break;
+            case "send-btn":
+                peo_type = 0;
+                break;
+            case "delivery-btn":
+                peo_type = 1;
+                break;
+        }
+    }
+
+    $("#receive-btn").click(function() {
+        $(".cover-wrap").css("display", "block");
+        peo('receive-btn');
+        fetch1(1, 10);
+    });
+    $("#send-btn").click(function() {
+        $(".cover-wrap").css("display", "block");
+        peo('send-btn');
+        fetch1(1, 10);
+    });
+    $("#delivery-btn").click(function() {
+        $(".cover-wrap").css("display", "block");
+        peo('delivery-btn');
+        fetch1(1, 10);
+    })
+
+
+
+    //分配使用
+    $("#add-confirm").click(function() {
+        $.ajax({
+            url: "http://192.168.1.14:8080/zhll-ssm/addOrder",
+            type: "POST",
+            data: {
+                "mecname": $("#hospital").val(),
+                "conid": $("#send-id").val(),
+                "conname": $("#send-name").val(),
+                "conphone": $("#send-tel").val(),
+                "delid": $("#delivery-id").val(),
+                "delname": $("#delivery-name").val(),
+                "delphone": $("#delivery-tel").val(),
+                "conerid": $("#receive-id").val(),
+                "conername": $("#receive-name").val(),
+                "conerphone": $("#receive-tel").val(),
+                "coneraddress": $("#address").val(),
+                "boxno": box_num,
+            },
+            success: function(msg) {
+                location.href = "rent.html";
+            }
+        })
+    })
     </script>
+    <script src="js/page.js"></script>
+    <script src="js/page1.js"></script>
+    <script src="js/add.js"></script>
 </body>
 
 </html>

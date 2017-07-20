@@ -45,7 +45,7 @@ function match(match_type, match_text) {
                 $("#user-status").val(1);
                 break;
             case "全部":
-                $("#user-status").val(2);
+                $("#user-status").val("");
                 break;
         };
     } else if (match_type == "user-type") {
@@ -61,24 +61,6 @@ function match(match_type, match_text) {
                 break;
             case "代理商":
                 $("#user-type").val(2);
-                break;
-        }
-    } else if (match_type == "device-capacity") {
-        switch (match_text) {
-            case "全部":
-                $("#device-capacity").val("");
-                break;
-            case "5升":
-                $("#device-capacity").val(5);
-                break;
-            case "10升":
-                $("#device-capacity").val(10);
-                break;
-            case "25升":
-                $("#device-capacity").val(25);
-                break;
-            case "45升":
-                $("#device-capacity").val(45);
                 break;
         }
     } else if (match_type == "lend") {
@@ -112,8 +94,58 @@ function match(match_type, match_text) {
                 break;
 
         }
-    } else {
+    } else if (match_type == "drug-status") {
+        switch (match_text) {
+            case "全部":
+                $("#drug-status").val("");
+                break;
+            case "启用":
+                $("#drug-status").val(0);
+                break;
+            case "停用":
+                $("#drug-status").val(1);
+                break;
 
-    }
+        }
+    } else if (match_type == "lock-status") {
+        switch (match_text) {
+            case "全部":
+                $("#lock-status").val("");
+                break;
+            case "正常":
+                $("#lock-status").val(0);
+                break;
+            case "异常":
+                $("#lock-status").val(1);
+                break;
+            case "停用":
+                $("#lock-status").val(2);
+                break;
+        }
+    } else if (match_type == "agency-type") {
+        switch (match_text) {
+            case "全部":
+                $("#agency-type").val("");
+                break;
+            case "医院":
+                $("#agency-type").val(0);
+                break;
+            case "代理":
+                $("#agency-type").val(1);
+                break;
+        }
+    } else if (match_type == "agency-status") {
+        switch (match_text) {
+            case "全部":
+                $("#agency-status").val("");
+                break;
+            case "正常":
+                $("#agency-status").val(0);
+                break;
+            case "停用":
+                $("#agency-status").val(1);
+                break;
+        }
+    } else {}
 
 }

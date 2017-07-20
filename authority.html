@@ -13,7 +13,7 @@
     <div class="auth-wrap">
         <div class="btn">
             <label for="">角色名：
-                <input type="text">
+                <input type="text" id="name">
             </label>
             <button>查询</button>
             <button id="reset">重置</button>
@@ -60,6 +60,10 @@
     window.onload = function() {
         window.parent.setIframeHeight(window.parent.user);
     }
+
+    $("#reset").click(function(){
+        $("#name").val("");
+    })
     </script>
 </body>
 
